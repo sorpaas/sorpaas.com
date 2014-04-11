@@ -5,6 +5,7 @@ build: node_modules
 	
 deploy: build
 	cd ./build
+	echo TIMESTAMP
 	git add --all
 	git commit -m "deploy site $(TIMESTAMP)"
 	git push origin gh-pages
