@@ -1,4 +1,4 @@
-TIMESTAMP = $(date +%s)
+TIMESTAMP = $(/bin/date +%s)
 
 build: node_modules
 	node ./build.js
