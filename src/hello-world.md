@@ -1,6 +1,6 @@
 ---
-title: My First Post
-date: 2012-08-20
+title: Hello, World!
+date: 2014-04-11
 template: post.html
 ---
 
