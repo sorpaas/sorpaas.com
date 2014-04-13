@@ -19,7 +19,9 @@ m.metadata({
 m.use(drafts())
 m.use(markdown())
 m.use(permalinks(':title'))
-m.use(templates('handlebars'))
+m.use(templates('ejs'))
 m.use(domain('sorpaas.com'))
 
-m.build();
+m.build(function(err){
+  if (err) throw err;
+});
