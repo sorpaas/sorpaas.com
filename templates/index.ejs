@@ -1,10 +1,13 @@
 <html>
 <head>
+  <% include views/common/head-meta-default %>
+  <% include views/common/head-fonts %>
+  <% include views/common/head-css-site-default %>
   <title><%= title %></title>
   <meta name="description" content="<%= description %>">
 </head>
 <body>
-  <h1><%= title %></h1>
+  <h1 class="site-title"><%= title %></h1>
   <%- contents %>
 </body>
 </html>

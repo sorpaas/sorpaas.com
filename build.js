@@ -7,7 +7,9 @@ var markdown = require('metalsmith-markdown');
 var permalinks = require('metalsmith-permalinks');
 var templates = require('metalsmith-templates');
 var metadata = require('metalsmith-metadata');
-var domain = require('./plugins/github-pages-domain')
+var assets = require('metalsmith-static');
+
+var domain = require('./plugins/github-pages-domain');
 
 var m = Metalsmith(__dirname);
 
@@ -20,6 +22,10 @@ m.use(drafts())
 m.use(markdown())
 m.use(permalinks(':title'))
 m.use(templates('ejs'))
+m.use(assets({
+  src: "assets",
+  dest: "assets"
+}));
 m.use(domain('sorpaas.com'))
 
 m.build(function(err){

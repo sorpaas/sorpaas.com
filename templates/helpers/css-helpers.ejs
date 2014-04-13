@@ -1,0 +1,11 @@
+<%
+this.helpers = this.helpers || {}
+
+this.helpers.css_load = function(path, id) {
+  if(id) {
+    return "<link rel='stylesheet' id='" + id + "' href='" + path + "' type='text/css' media='all'>"
+  } else {
+    return "<link rel='stylesheet' href='" + path + "' type='text/css' media='all'>"
+  }
+}
+%>
