@@ -1,4 +1,5 @@
 build: node_modules
+	rm -rf ./build/*
 	node ./build.js
 	
 deploy: build

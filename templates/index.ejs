@@ -1,15 +1,20 @@
+<% include views/include/fonts %>
+<% include views/include/css-common %>
+<% include views/include/code-prettify %>
+<% include views/include/jquery %>
+
 <html>
 <head>
   <% include views/common/head-meta-default %>
   
-  <% include views/common/css-fonts %>
-  <% include views/common/css-site-default %>
   <title><%= title %></title>
-  <meta name="description" content="<%= description %>">
+  
+  <%- this.helpers.css_load_html %>
 </head>
 <body>
   <h1 class="site-title"><%= title %></h1>
   <%- contents %>
-  <% include views/common/js-libraries-default %>
+  
+  <%- this.helpers.js_load_html %>
 </body>
 </html>
