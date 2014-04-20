@@ -3,8 +3,13 @@
   <title><%= title %></title>
 </head>
 <body>
-  <h1><%= title %></h1>
-  <time><%= date %></time>
-  <%- contents %>
+  <div class="page">
+    <% include views/header %>
+    <% include views/footer %>
+    
+    <h1><%= title %></h1>
+    <time><%= date %></time>
+    <%- contents %>
+  </div>
 </body>
 </html>

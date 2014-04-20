@@ -11,10 +11,13 @@
   
   <%- this.helpers.css_load_html %>
 </head>
-<body>
-  <h1 class="site-title"><%= title %></h1>
-  <%- contents %>
-  
+<body class="home blog">
+  <div id="page" class="hfeed site"> 
+    <% include views/header %>
+    <% include views/footer %>
+    
+    <%- contents %>
+  </div>
   <%- this.helpers.js_load_html %>
 </body>
 </html>
