@@ -2,7 +2,7 @@
 template: index.ejs
 ---
 
-Sorpa'as' new website is still under construction now. Check out the [Hello World](/hello-world) page now!
+Sorpa'as' new website is still under construction now. Check out the [Hello World](/hello-world) and [Quotes](/quotes) page now!
 
 ### Wait! Who is Sorpa'as?
 
