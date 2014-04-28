@@ -1,5 +1,5 @@
-watch: node_modules
-	node ./build.js --watch
+watch: node_modules node_modules/simple-server
+	node ./build.js --watch & cd ./build && ../node_modules/.bin/simple-server
 
 build: node_modules
 	rm -rf ./build/*
@@ -15,8 +15,5 @@ node_modules: package.json
 	
 node_modules/simple-server:
 	npm install simple-server
-	
-server: node_modules/simple-server
-	cd ./build && ../node_modules/.bin/simple-server
 
 .PHONY: build
