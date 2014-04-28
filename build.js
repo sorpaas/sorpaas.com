@@ -8,10 +8,15 @@ var permalinks = require('metalsmith-permalinks');
 var templates = require('metalsmith-templates');
 var metadata = require('metalsmith-metadata');
 var assets = require('metalsmith-static');
+var watch = require('metalsmith-watch');
 
 var domain = require('./plugins/github-pages-domain');
 
 var m = Metalsmith(__dirname);
+
+if(process.argv[2] == "--watch") {
+  m.use(watch);
+}
 
 m.metadata({
   title: "sorpa'as",
