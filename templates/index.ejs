@@ -1,7 +1,7 @@
+<% include views/include/bootstrap %>
 <% include views/include/fonts %>
 <% include views/include/css-common %>
 <% include views/include/code-prettify %>
-<% include views/include/bootstrap %>
 
 <html>
 <head>
@@ -13,8 +13,7 @@
 </head>
 <body class="home blog">
   <div class="container">
-    <% include views/header %>
-    <% include views/footer %>
+    <h1><%= title %></h1>
     
     <div class="row">
       <div class="col-lg-12 col-md-12 col-sm-12">
@@ -23,8 +22,7 @@
     </div>
   </div>
   
-  
-  
+  <% include views/footer %>
   <%- this.helpers.js_load_html %>
 </body>
 </html>

@@ -1,127 +1,14 @@
-<!DOCTYPE html>
-<head>
-  <meta charset="utf-8">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@sorpaas">
-  <meta name="twitter:title" content="Freelancer Skills">
-  <meta name="twitter:description" content="All freelancer skills analytics by counting.">
-  <meta name="twitter:creator" content="@sorpaas">
-  <meta name="twitter:image:src" content="">
-  <meta name="twitter:domain" content="sorpaas.com">
-  <meta name="twitter:app:name:iphone" content="">
-  <meta name="twitter:app:name:ipad" content="">
-  <meta name="twitter:app:name:googleplay" content="">
-  <meta name="twitter:app:url:iphone" content="">
-  <meta name="twitter:app:url:ipad" content="">
-  <meta name="twitter:app:url:googleplay" content="">
-  <meta name="twitter:app:id:iphone" content="">
-  <meta name="twitter:app:id:ipad" content="">
-  <meta name="twitter:app:id:googleplay" content="">
-  <title>sorpaas</title>
-  <style>
+---
+title: Freelancers
+date: 2014-04-11
+template: post.ejs
+custom_css: <link rel='stylesheet' href='/assets/freelancers/freelancers.css' type='text/css' media='all'>
+---
 
-  .bar {
-    fill: steelblue;
-  }
-
-  .bar:hover {
-    fill: brown;
-  }
-
-  .axis {
-    font: 10px sans-serif;
-  }
-
-  .axis path,
-  .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-  }
-
-  #csvdata {
-      display: none;
-  }
-
-  </style>
-</head>
-  <body>
-    <h1>Freelancer Skills Distribution</h1>
-  <script src="/assets/jquery/jquery-1.11.0.min.js"></script>
-  <script src="/assets/d3js/d3.min.js"></script>
-  <script>
-
-  $(document).ready(function() {
-    function type(d) {
-      d.count = +d.count;
-      return d;
-    }
-      
-    var raw = d3.select("#csvdata").text();
-    var data = d3.csv.parse(raw);
-  
-    var margin = {top: 20, right: 20, bottom: 30, left: 120},
-        width = 960 - margin.left - margin.right,
-        height = 30 * data.length - margin.top - margin.bottom;
-
-    var x = d3.scale.linear()
-        .range([width, 0]);
-
-    var y = d3.scale.ordinal()
-        .rangeBands([0, height], .1);
-
-    var xAxis = d3.svg.axis()
-        .scale(x)
-        .orient("bottom");
-      
-    var topAxis = d3.svg.axis()
-        .scale(x)
-        .orient("top");
-
-    var yAxis = d3.svg.axis()
-        .scale(y)
-        .orient("left");
-
-    var svg = d3.select("body").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    x.domain([1617/*d3.max(data, function(d) { return d.count; })*/, 0]);
-    y.domain(data.map(function(d) { return d.skill; }));
-
-    svg.append("g")
-        .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis);
-      
-    svg.append("g")
-        .attr("class", "x axis")
-        .call(topAxis);
-
-    svg.append("g")
-        .attr("class", "y axis")
-        .call(yAxis)
-      .append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 6)
-        .attr("dy", ".71em")
-        .style("text-anchor", "end");
-
-    svg.selectAll(".bar")
-        .data(data)
-      .enter().append("rect")
-        .attr("class", "bar")
-        .attr("x", 0/*function(d) { return x(d.count); }*/)
-        .attr("width", function(d) { return x(d.count); })
-        .attr("y", function(d) { return y(d.skill); })
-        .attr("height", y.rangeBand());
-  });
-
-  </script>
-
-  <pre id="csvdata">
+<script src="/assets/jquery/jquery-1.11.0.min.js"></script>
+<script src="/assets/d3js/d3.min.js"></script>
+<script src="/assets/freelancers/freelancers.js"></script>
+<pre id="csvdata">
 skill,count
 Php,1617
 Graphic design,1403
@@ -628,5 +515,4 @@ Filemaker,1
 Tax law,1
 Furniture assembly,1
 Javafx,1
-  </pre>
-</body>
+</pre>
