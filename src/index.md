@@ -1,5 +1,7 @@
 ---
+title: Sorpa'as Plat -- The Code Artist
 template: index.ejs
+permalink: 
 ---
 
 Sorpa'as' new website is still under construction now. Check out the [Hello World](/hello-world) and [Quotes](/quotes) page now!

@@ -38,7 +38,7 @@ m.metadata({
 
 m.use(drafts())
 m.use(markdown())
-m.use(permalinks(':title'))
+m.use(permalinks(':permalink'))
 m.use(templates('ejs'))
 m.use(assets({
   src: "assets",

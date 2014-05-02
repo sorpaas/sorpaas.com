@@ -1,8 +1,9 @@
 ---
-title: Freelancers
+title: Freelancer Skills
 date: 2014-04-11
 template: post.ejs
 custom_css: <link rel='stylesheet' href='/assets/freelancers/freelancers.css' type='text/css' media='all'>
+permalink: freelancers
 ---
 
 <script src="/assets/jquery/jquery-1.11.0.min.js"></script>
