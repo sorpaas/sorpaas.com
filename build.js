@@ -15,7 +15,7 @@ var domain = require('./plugins/github-pages-domain');
 var m = Metalsmith(__dirname);
 
 if(process.argv[2] == "--watch") {
-  m.use(watch);
+  m.use(watch('../**/*'));
 }
 
 m.metadata({
