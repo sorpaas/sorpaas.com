@@ -18,3 +18,4 @@ Sorpa'as loves working on projects. Ask him for what he has done!
 ### Side Projects
 
 * [Freelancers Data](/freelancers)
+* [HTTPShell](https://github.com/sorpaas/httpshell)
