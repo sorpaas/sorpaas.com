@@ -1,10 +1,8 @@
 ---
 title: Freelancer Skills
-layout: blank
 ---
 
 <link rel='stylesheet' href='/css/freelancers.css' type='text/css' media='all'>
-<script src="/js/vendor/jquery-1.11.0.min.js"></script>
 <script src="/js/vendor/d3.min.js"></script>
 <script src="/js/freelancers.js"></script>
 <pre id="csvdata">

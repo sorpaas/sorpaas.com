@@ -3,11 +3,11 @@
 
 # TEAM
 
-    sorpa'as plat -- creator -- @sorpaas
+    <name> -- <role> -- <twitter>
 
 # THANKS
 
-    Brendan
+    <name>
 
 # TECHNOLOGY COLOPHON
 

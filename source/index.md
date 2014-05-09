@@ -8,7 +8,6 @@ Sorpa'as' new website is still under construction now. Check out the [Hello Worl
 
 Sorpa'as is a nerd who dreams of coding all the time. Yeah!
 
-
 ### Projects
 
 Sorpa'as loves working on projects. Ask him for what he has done!
