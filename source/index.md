@@ -21,4 +21,3 @@ Sorpa'as loves working on projects. Ask him for what he has done!
 
 * [Freelancers Data](/freelancers.html)
 * [HTTPShell](https://github.com/sorpaas/httpshell)
-* [dev.ns.mg](http://dev.ns.mg)

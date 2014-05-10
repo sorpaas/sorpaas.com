@@ -1,16 +1,19 @@
-
-
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
 
+body {
+  background: #e7e7e7 url(../img/body-bg.png) repeat;
+}
 
-
-
-
-
-
-
+#container {
+  border-right-style:solid;
+  border-left-style:solid;
+  border-bottom-style:solid;
+  border-width:1px;
+  margin:auto;
+  max-width:800px;
+}
 
 
 

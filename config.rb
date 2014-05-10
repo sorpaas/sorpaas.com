@@ -50,10 +50,9 @@ activate :directory_indexes
 # end
 
 set :css_dir, 'css'
-
 set :js_dir, 'js'
-
 set :images_dir, 'img'
+set :layout, 'main-pdf'
 
 # Build-specific configuration
 configure :build do
