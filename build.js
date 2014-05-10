@@ -14,23 +14,6 @@ var domain = require('./plugins/github-pages-domain');
 
 var m = Metalsmith(__dirname);
 
-m.use(function(files, metalsmith, done) {
-  var sys = require('sys')
-  var exec = require('child_process').exec;
-  exec("make clean", function(error, stdout, stderr) {
-    sys.puts(stdout);
-    done();
-  });
-});
-
-if(process.argv[2] == "--watch") {
-  var directories = ['src', 'templates', 'assets'];
-  m.use(watch({
-    pattern : directories.map(function(dir) { return '../' + [dir] + '/**/*' }),
-    livereload: false
-  }));
-}
-
 m.metadata({
   title: "sorpa'as",
   description: "sorpa'as personal website"
@@ -44,7 +27,7 @@ m.use(assets({
   src: "assets",
   dest: "assets"
 }));
-m.use(domain('sorpaas.com'))
+m.use(domain('sorpaas.com'));
 
 m.build(function(err){
   if (err) throw err;
