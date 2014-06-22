@@ -19,3 +19,4 @@ copyright: 		Copyright 2014 sorpa'as.
 
 # Build Settings
 permalinks: 	pretty
+markdown: kramdown
