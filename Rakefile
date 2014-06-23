@@ -33,3 +33,8 @@ task :cd, [:message] do |t, args|
   Rake::Task["commit"].invoke(args['message'])
   Rake::Task["deploy"].invoke
 end
+
+desc "Watch"
+task :watch do
+  `bundle exec guard`
+end
