@@ -36,5 +36,5 @@ end
 
 desc "Watch"
 task :watch do
-  `bundle exec guard`
+  `bundle exec jekyll serve --watch`
 end

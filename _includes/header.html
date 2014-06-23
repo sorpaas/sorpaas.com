@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  
+
   <head>
 
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
@@ -46,12 +46,12 @@
       </script>
     {% endif %}
 
-  </head>  
+  </head>
 
   <body>
 
     <header data-animation="fadeInDownBig">
-      
+
       {% if site.title %}<a href="{{ '/' | prepend: site.baseurl }}" title="Back to Homepage" class="logo">{{ site.name }}</a>{% endif %}
 
       {% assign pages = site.pages | sort: 'date' | where: 'navigation', true %}
@@ -61,13 +61,13 @@
       <nav>
         <ul>
           <li><a href="{{ '/' | prepend: site.baseurl }}" title="Home">Home</a></li>
-          {% for page in pages %}
-            {% if page.title and page.type != 'home' %}
+          {% for page in site.pages %}
+            {% if page.navbar %}
               <li><a href="{{ page.url | prepend: site.baseurl }}" title="{{ page.title }}">{{ page.title }}</a></li>
             {% endif %}
           {% endfor %}
           {% for post in posts %}
-            {% if post.title and post.type != 'home' %}
+            {% if post.navbar %}
               <li><a href="{{ post.url | prepend: site.baseurl }}" title="{{ post.title }}">{{ post.title }}</a></li>
             {% endif %}
           {% endfor %}

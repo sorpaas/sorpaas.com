@@ -10,13 +10,11 @@
 
 	<article>
 
-		{% unless page.skip_excerpt %}
-		<header class="gradient-{{ gradient }}" data-animation="fadeInDownBig">
-
-			{% include excerpt.html %}
-
+		<header class="gradient-{{ gradient }}{% unless page.excerpt %} gradient-navbar{% endunless %}" data-animation="fadeInDownBig">
+			{% if page.excerpt %}
+				{% include excerpt.html %}
+			{% endif %}
 		</header>
-		{% endunless %}
 
 		<div class="body" data-animation="fadeInUp">
 
