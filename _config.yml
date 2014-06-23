@@ -12,8 +12,7 @@ paginate_path: 	"blog/page/:num"
 twitter: 		sorpaas
 email: 			me@sorpaas.com
 
-disqus: 		your_disqus_shortname
-analytics: 		UA-XXXXXXX-Y
+analytics: 		UA-48084244-4
 
 copyright: 		Copyright 2014 sorpa'as.
 
