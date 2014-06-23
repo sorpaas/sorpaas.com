@@ -1,22 +1,22 @@
 # Site Settings
-baseurl: 		""
-title: 			sorpa'as plat
+baseurl       : ""
+title         : sorpa'as plat
 
-name: 			sorpa'as plat
-description: 	The website of sorpa'as
-url: 			"http://sorpaas.com"
+name          : sorpa'as plat
+description   : The website of sorpa'as
+url           : "http://sorpaas.com"
 
-paginate: 		3
-paginate_path: 	"blog/page/:num"
+paginate      : 3
+paginate_path : "blog/page/:num"
 
-twitter: 		sorpaas
-email: 			me@sorpaas.com
+twitter       : sorpaas
+email         : me@sorpaas.com
 
-analytics: 		UA-48084244-4
+analytics     : UA-48084244-4
 
-copyright: 		Copyright 2014 sorpa'as.
+copyright     : Copyright 2014 sorpa'as.
 
 # Build Settings
-permalinks: 	pretty
-markdown: kramdown
-exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+permalinks    : pretty
+markdown      : kramdown
+exclude       : ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']

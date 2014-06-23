@@ -7,14 +7,16 @@
 {% endif %}
 
 <section class="content">
-  
+
 	<article>
-    
+
+		{% unless page.skip_excerpt %}
 		<header class="gradient-{{ gradient }}" data-animation="fadeInDownBig">
 
 			{% include excerpt.html %}
 
 		</header>
+		{% endunless %}
 
 		<div class="body" data-animation="fadeInUp">
 
