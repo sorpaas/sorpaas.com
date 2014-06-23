@@ -7,7 +7,7 @@ description: 	The website of sorpa'as
 url: 			"http://sorpaas.com"
 
 paginate: 		3
-paginate_path: 	"blog/page:num"
+paginate_path: 	"blog/page/:num"
 
 twitter: 		sorpaas
 email: 			me@sorpaas.com
@@ -15,8 +15,9 @@ email: 			me@sorpaas.com
 disqus: 		your_disqus_shortname
 analytics: 		UA-XXXXXXX-Y
 
-copyright: 		Copyright 2014 sorpa'as.	
+copyright: 		Copyright 2014 sorpa'as.
 
 # Build Settings
 permalinks: 	pretty
 markdown: kramdown
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
