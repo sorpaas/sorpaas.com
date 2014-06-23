@@ -31,5 +31,5 @@ end
 desc "Commit and deploy"
 task :cd, [:message] do |t, args|
   Rake::Task["commit"].invoke(args['message'])
-  Rake::Talk["deploy"].invoke
+  Rake::Task["deploy"].invoke
 end
