@@ -780,3 +780,11 @@ code { padding: 3px 6px; }
         body > footer .copyright a { margin: 0 }
 
 }
+
+.jumbotron h2, .jumbotron h2, .jumbotron h3, .jumbotron h4, .jumbotron h5 {
+    line-height: 1.35 !important;
+}
+
+.jumbotron {
+  margin-bottom: 50px;
+}
