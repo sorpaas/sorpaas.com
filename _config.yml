@@ -6,8 +6,8 @@ name          : sorpa'as plat
 description   : The website of sorpa'as
 url           : "http://sorpaas.com"
 
-paginate      : 3
-paginate_path : "blog/page/:num"
+# paginate      : 3
+# paginate_path : "blog/page/:num"
 
 twitter       : sorpaas
 email         : me@sorpaas.com
@@ -20,3 +20,6 @@ copyright     : Copyright 2014 sorpa'as.
 permalinks    : pretty
 markdown      : kramdown
 exclude       : ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile', 'Guardfile']
+collections   :
+  projects    :
+    output    : true

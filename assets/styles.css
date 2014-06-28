@@ -788,3 +788,20 @@ code { padding: 3px 6px; }
 .jumbotron {
   margin-bottom: 50px;
 }
+
+.project-preview {
+  border: solid 1px #ccc;
+  height: 80px;
+  margin-bottom: .5em;
+  width: 720px;
+}
+
+.project-date {
+  color: #636363;
+  font-family: "PT Sans", sans-serif;
+  font-size: smaller;
+  margin: 2px 0 0 480px;
+  position: absolute;
+  text-align: right;
+  width: 240px;
+}

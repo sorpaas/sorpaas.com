@@ -4,21 +4,20 @@ layout       : default
 type         : home
 navigation   : true
 
-date         : 2014-05-08
-gradient     : 1
-skip_excerpt : false
-
 ---
 
 <div class="jumbotron">
-  <h2>Well, I'm glad that you have successfully found a site under construction. Read on for something about me. Check out my posts and other things to find more about me...<a href="/why-jekyll.html" title="Continue" class="more">Continue</a></h2>
+  <h2>Well, I'm glad that you have successfully found a site under construction. Read on for something about me. Check out my posts and other things to find more about me...<a href="/about" title="Continue" class="more">Continue</a></h2>
 </div>
 
-<h2>Here are some guides for Hashtag of Jekyll if you are curious...</h2>
-<p>Please follow these guides in order to get a good impression about the themes functionality and how it works.</p>
+{% for project in site.projects %}
 
-{% for post in paginator.posts %}
+  {% include item-project.html %}
+
+{% endfor %}
+
+<!-- {% for post in paginator.posts %}
 
   {% include summary.html %}
 
-{% endfor %}
+{% endfor %} -->
