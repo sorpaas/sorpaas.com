@@ -805,3 +805,51 @@ code { padding: 3px 6px; }
   text-align: right;
   width: 240px;
 }
+
+@media only screen and (max-width: 1440px) {
+  .project-preview {
+    height: 80px;
+    width: 634px;
+  }
+
+  .project-date {
+    width: 240px;
+    margin: 2px 0 0 394px;
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  .project-preview {
+    height: 80px;
+    width: 634px;
+  }
+
+  .project-date {
+    width: 240px;
+    margin: 2px 0 0 394px;
+  }
+}
+
+@media only screen and (max-width: 634px) {
+  .project-preview {
+    height: 52px;
+    width: 412px;
+  }
+
+  .project-date {
+    width: 156px;
+    margin: 1.3px 0 0 256px;
+  }
+}
+
+@media only screen and (max-width: 412px) {
+  .project-preview {
+    height: 37.9px;
+    width: 300px;
+  }
+
+  .project-date {
+    width: 133.6px;
+    margin: 0.9px 0 0 166.4px;
+  }
+}
