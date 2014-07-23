@@ -1,0 +1,10 @@
+title: GSS
+permalink: /:categories/:title
+pygments: true
+version: "1.0.4-beta"
+markdown: redcarpet
+exclude:
+  - "README.md"
+  - "Gruntfile.coffee"
+  - "node_modules"
+  - "*.psd"

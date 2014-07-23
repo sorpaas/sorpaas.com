@@ -1,0 +1,108 @@
+---
+uid: ifelse
+title: if else blocks
+subtitle: Responsive to any prop w/o Media Queries
+color: b
+layout: post
+---
+
+The age of "Responsive Web Design" is upon us and it's mandate for designs that elegantly adapt to the user's viewing context has made web dev "hard, really hard, actually" as Mr Jeff Croft [lamented](http://jeffcroft.com/blog/2012/mar/02/implementing-responsive-design/).  Conceptualizing Responsive layouts is difficult enough, but implementing such layouts with [CSS Media Queries](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries) is an awkward affair because as Ian Taylor [illuminated](http://ianstormtaylor.com/media-queries-are-a-hack/), Media Queries are a hack.  
+
+## Element Queries
+
+Media Queries allow layouts to adapt to the size of the viewport, but if you want to adapt to anything else, tough luck.  W3C members have received an [onslaught](http://www.xanthir.com/b4PR0) of requests for "Element Queries" - because web designers are desperate to achieve higher levels of adaptiveness with their layouts.  The idea with Element Queries is simple - individual elements can be responsive to their own size, which would allow for richer designs & more modular Style Sheets.  While web developers ponder [work-arounds](http://filamentgroup.com/lab/element_query_workarounds/) for lack of Element Queries, [the W3C decided](http://www.xanthir.com/b4PR0) to avoid the issue all together.
+
+Yet, even with the hypothetical Element Query, elements could only be adaptive to their size.  Why not allow elements to be adaptive to any property like `col-count` or even to a custom variable?
+
+## Arbitrary Property Conditionals
+
+Which brings us to `@if` and `@else` directives.  Think of them as a more expressive replacement for Media Queries and the much desired Element Query, that allow CSS rules to be adaptive to any arbitrary property or custom constraint variable.
+
+Instead of continuing the tradition of the Query types; `min-width`, `max-width`, `min-height` & `max-height`; for every available CSS property, `@if` `@else` directives use the conditional operators; `<`, `<=`, `>`, `>=`, `!=`, `==`, `or`, and `and`.
+
+As an example, if we wanted a set of CSS rules to kick when the screen is less than 960px:
+
+{% highlight css %}
+
+/* GSS: */
+@if ::window[width] < 960 {
+  /* ... */
+}
+
+/* Old-school Media Queries: */
+@media screen and (max-width: 960px) {
+  /* ... */
+}
+
+{% endhighlight %}
+
+But, any property can be used within an `@if`, `@else` conditional.  So, if you want a layout to be responsive to a panel's width:
+
+{% highlight css %}
+
+/* GSS: */
+@if #panel[width] >= 800 {
+  /* ... */
+}
+@else #panel[width] >= 500 {
+  /* ... */
+}
+@else {
+  /* ... */
+}
+
+/* Not possible with Media Queries */
+{% endhighlight %}
+
+
+
+{% highlight css %}
+
+@if #panel[width] >= 500 {
+  @horizontal .item;  
+  #button {
+    font-size: == 18;
+  }
+}
+@else {
+  @vertical .item;
+  #button {
+    font-size: == 14;
+  }
+}
+{% endhighlight %}
+
+
+
+{% highlight css %}
+#box1[width] == 9;
+#box2[width] == 19;
+
+/* with ::this pseudo selector */ 
+.box {
+  @if ::[width] < 10 {
+    height: == 10;
+  }
+  @else {
+    height: == 20;
+  }
+}
+{% endhighlight %}
+
+
+{% highlight css %}
+[calories] == 500;
+
+/* with custom constraint variable */ 
+@if [calories] >= 960 {
+  #boo[hunger] == 1;
+}
+@else {
+  #boo[hunger] == 1000; 
+}
+
+/* #boo[hunger] will be 1000 */ 
+{% endhighlight %}
+
+
+WIP, more coming soon...

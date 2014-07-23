@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" class="gss-not-ready">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title }} | {{ site.title }}</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <style>
+    .gss-not-ready body {
+      opacity: 0;
+    }
+    .gss-ready body {
+      opacity: 1;
+    }
+    </style>
+  </head>
+  <body class="style-a">
+    
+    {% include analytics.html %}
+    
+    <script>
+    GSS_CONFIG = {
+      worker: "/bower_components/gss/dist/worker.js",
+      fractionalPixels: false,
+      resizeDebounce: 16, // (ms)
+      debug: false,
+      verticalScroll: false
+    }
+    </script>
+    <script src="/bower_components/gss/dist/gss.js"></script>
+    
+    {{content}}
+    
+  </body>
+</html>
