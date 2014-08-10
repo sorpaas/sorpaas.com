@@ -138,7 +138,7 @@
 
 &lt;p&gt;Just push the contents of the &lt;code&gt;_site&lt;/code&gt; folder to your webserver or start a local one and you’ll see that it works just the way it should. &lt;code&gt;jekyll serve&lt;/code&gt; does that for you as well by the way and you can access it by opening &lt;code&gt;http://localhost:4000&lt;/code&gt; in your browser.&lt;/p&gt;
 </description>
-        <pubDate>Fri, 09 May 2014 00:00:00 +0800</pubDate>
+        <pubDate>Fri, 09 May 2014 00:00:00 +0000</pubDate>
         <link>/guides/2014/05/09/getting-started.html</link>
         <guid isPermaLink="true">/guides/2014/05/09/getting-started.html</guid>
       </item>
@@ -211,7 +211,7 @@
 
 &lt;p&gt;Add just the same front-matter, but instead of setting &lt;code&gt;type&lt;/code&gt; to &lt;code&gt;post&lt;/code&gt;, it should be &lt;code&gt;page&lt;/code&gt; this time. &lt;em&gt;Rebuild the site once again&lt;/em&gt; via &lt;code&gt;jekyll build&lt;/code&gt; or a more advanced command and that’s it already!&lt;/p&gt;
 </description>
-        <pubDate>Thu, 08 May 2014 00:00:00 +0800</pubDate>
+        <pubDate>Thu, 08 May 2014 00:00:00 +0000</pubDate>
         <link>/guides/2014/05/08/adding-posts-and-pages.html</link>
         <guid isPermaLink="true">/guides/2014/05/08/adding-posts-and-pages.html</guid>
       </item>
@@ -344,7 +344,7 @@
 
 &lt;/div&gt;
 </description>
-        <pubDate>Wed, 07 May 2014 00:00:00 +0800</pubDate>
+        <pubDate>Wed, 07 May 2014 00:00:00 +0000</pubDate>
         <link>/guides/2014/05/07/adding-media-with-captions.html</link>
         <guid isPermaLink="true">/guides/2014/05/07/adding-media-with-captions.html</guid>
       </item>
@@ -392,7 +392,7 @@
   &lt;li&gt;&lt;strong&gt;analytics:&lt;/strong&gt; Add your &lt;a href=&quot;https://www.google.de/analytics/&quot;&gt;Google Analytics&lt;/a&gt; &lt;strong&gt;Tracking ID&lt;/strong&gt; here to enable statistics and tracking of each post and page.&lt;/li&gt;
 &lt;/ul&gt;
 </description>
-        <pubDate>Tue, 06 May 2014 00:00:00 +0800</pubDate>
+        <pubDate>Tue, 06 May 2014 00:00:00 +0000</pubDate>
         <link>/guides/2014/05/06/configuration.html</link>
         <guid isPermaLink="true">/guides/2014/05/06/configuration.html</guid>
       </item>
@@ -447,7 +447,7 @@
 
 &lt;p&gt;Please keep in mind though that &lt;strong&gt;links usually include colons and these are reserved by YAML&lt;/strong&gt;. That said, make sure that you wrap links (and literally anything else which might include colons) into quotes so they don’t break it.&lt;/p&gt;
 </description>
-        <pubDate>Mon, 05 May 2014 00:00:00 +0800</pubDate>
+        <pubDate>Mon, 05 May 2014 00:00:00 +0000</pubDate>
         <link>/guides/2014/05/05/front-matter.html</link>
         <guid isPermaLink="true">/guides/2014/05/05/front-matter.html</guid>
       </item>
