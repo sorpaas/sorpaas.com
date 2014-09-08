@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home | sorpa'as plat</title>
+    <title>Client-side | sorpa'as plat</title>
     <link rel="shortcut icon" href="/favicon.ico">    
     
     <link rel="stylesheet" href="/style/pygments.css" type="text/css" media="screen" title="no title" charset="utf-8">
@@ -176,79 +176,100 @@
     </style>
 
 
-    <section id="top-home-section" class="top-section color-a">
+    <strong>WARNING:</strong> This site is currently under heavy development, but left open to garner feedback and start the conversation.  Please direct bugs or suggestions to the issues list on <a style="font-weight:bold;" href="https://github.com/the-gss/">one of our repos</a>  
+</blockquote>
 
-  <style type="text/gss">
+## Installation
 
-  .top-button {
-    height: == ::[intrinsic-height] !require;
-    width: == ::[intrinsic-width] !require;
-    bottom: == ::parent[bottom] - [bottom-margin] !require;
-  }
+GSS will go parallel with [Web Workers](http://www.html5rocks.com/en/tutorials/workers/basics/) when the browser supports it.  Thus, you need two JS files to get started; `gss.js` & it's helpful `worker.js`.  Use the `GSS_CONFIG` object to set worker URL.
 
-  @horizontal [#top-button1]-<::window[center-x]>-[#top-button2]
-    gap([baseline] / 2)
-    chain-top;
+If you download via Bower:
 
-  [top-image-gap] == [baseline];
-  [top-image-gap] >= 0 !require;
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span> <span class="nx">bower</span> <span class="nx">install</span> <span class="nx">gss</span></code></pre></div>
 
-  #top-home-image {
-    width: <= 656 !require;
-    height: == ::[width] * 754/656 !require;
-    height: >= 400 !require;
-    center-x: == ::parent[center-x] !require;
-    center-y: == ::parent[center-y] !medium;
-    @horizontal |~-~[::]~-~| in(::parent) gap([other-top-image-gap]) !require;
-    @vertical   |-[::] in(::parent) gap([top-image-gap]) !strong;
-  }
-  .top-section {
-    height: >= 0;
-  }
-  #top-home-section {
-    bottom: == ::window[bottom] - [baseline] !strong;
-    top: == 0 !require;
-    /*height: >= 500 !require;*/
-    height: == ::window[height] !require;
-  }
+Use the following:
 
-  @vertical [#top-home-image]-[#top-title] gap([top-image-gap]) !require;
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script&gt;</span>
+  <span class="nx">GSS_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">worker</span><span class="o">:</span> <span class="s2">&quot;../bower_components/gss/dist/worker.js&quot;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;../bower_components/gss/dist/gss.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
 
-  @vertical [#top-title]-[#top-subtitle]-[#top-button1] gap([baseline]) !require;
+Otherwise, [download version 1.0.4-beta](https://github.com/the-gss/engine/archive/1.0.4-beta.zip) or clone the [github repo](https://github.com/the-gss/engine).
 
-  #top-title {
-    height: == ::[intrinsic-height] !require;
-    @horizontal |-[::]-| in(::parent) gap([col-size]);
-    padding-bottom: == [baseline];
-    font-size: == [title-font-size] * 1.3;
-  }
+**IMPORTANT** worker URL must be configured!
 
-  #top-subtitle {
-    height: == ::[intrinsic-height] !require;
-    left: == [content-left] !require;
-    right: == [content-right] !require;
-    padding-bottom: == [baseline];
-    text-align: center;
-    font-style: italic;
-  }
+## Usage
 
-  /*
-  .top-section {
-    top: == ::window[top];
-  }
-  */
+To load your `.gss` stylesheets, just add `type=text/gss`:
 
-  </style>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type=</span><span class="s">&quot;text/gss&quot;</span> <span class="na">href=</span><span class="s">&quot;my-awesome-styles.gss&quot;</span><span class="nt">&gt;&lt;/link&gt;</span></code></pre></div>
 
-  <!--div id="top-home-image"></div-->
+Likewise, inline GSS works with a simple `type="text/gss"`:
 
-  <h1 id="top-title">sorpa'as plat</h1>
-  <h3 id="top-subtitle" class="large-font">A strange person who loves copying.</h3>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/gss&quot;</span><span class="nt">&gt;</span>
 
-  <a href="http://blog.sorpaas.com" class="top-button button" id="top-button1">Blog</a>
-  <a href="http://github.com/sorpaas" class="top-button button" id="top-button2">Github</a>
+  <span class="c">/* Your GSS */</span>
 
-</section>
+<span class="nt">&lt;/style&gt;</span></code></pre></div>
+
+
+## Configuration
+
+Options can be given on the following global object before the `<script src="gss.js"></script>`:
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script&gt;</span>
+<span class="nx">GSS_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+  
+  <span class="c1">// Web Worker</span>
+  <span class="c1">// URL to worker must be set!</span>
+  <span class="nx">worker</span><span class="o">:</span> <span class="s1">&#39;../dist/worker.js&#39;</span><span class="p">,</span> 
+  <span class="nx">useWorker</span><span class="o">:</span> <span class="o">!!</span><span class="nb">window</span><span class="p">.</span><span class="nx">Worker</span><span class="p">,</span>
+  
+  <span class="c1">// Cassowary defaults </span>
+  <span class="nx">defaultStrength</span><span class="o">:</span> <span class="s1">&#39;weak&#39;</span><span class="p">,</span> <span class="c1">// &#39;weak&#39;, &#39;medium&#39;, &#39;strong&#39;, &#39;required&#39;</span>
+  <span class="nx">defaultWeight</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>  
+  
+  <span class="c1">// FOUC prevention </span>
+  <span class="c1">// adds &quot;gss-ready&quot; and removes &quot;gss-not-ready&quot; classes on html tag</span>
+  <span class="nx">readyClass</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>    
+  
+  <span class="c1">// Fractional pixels values</span>
+  <span class="c1">// bad for text, good for accuracy </span>
+  <span class="nx">fractionalPixels</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+  
+  <span class="c1">// Scrollbar size offset</span>
+  <span class="nx">verticalScroll</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> 
+  <span class="nx">horizontalScroll</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  
+  <span class="c1">// Mutation Observer</span>
+  <span class="nx">observe</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>      
+  <span class="nx">observerOptions</span><span class="o">:</span> <span class="p">{</span> 
+    <span class="nx">subtree</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">childList</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">attributes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">characterData</span><span class="o">:</span> <span class="kc">true</span>
+  <span class="p">},</span>     
+  
+  <span class="c1">// Callback to process variables before setting DOM</span>
+  <span class="nx">processBeforeSet</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> <span class="c1">// function</span>
+    
+  <span class="c1">// ::window resize debounce time</span>
+  <span class="nx">resizeDebounce</span><span class="o">:</span> <span class="mi">32</span><span class="p">,</span> <span class="c1">// (ms)</span>
+  
+  <span class="c1">// Logging </span>
+  <span class="nx">debug</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">warn</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">perf</span><span class="o">:</span> <span class="kc">false</span>
+  
+<span class="p">};</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;gss.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+
+
+
+
 
 
     <!-- Top Nav -->

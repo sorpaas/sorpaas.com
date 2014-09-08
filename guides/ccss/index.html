@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en" class="gss-not-ready">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Constraint CSS | sorpa'as plat</title>
+    <link rel="shortcut icon" href="/favicon.ico">    
+    
+    <link rel="stylesheet" href="/style/pygments.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/style/styles.css" type="text/css" media="screen" title="no title" charset="utf-8">        
+    <script type="text/javascript" src="//use.typekit.net/les8uug.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-47811332-1', 'gridstylesheets.org');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+</script>
+<script>
+  (function() {
+    var _fbq = window._fbq || (window._fbq = []);
+    if (!_fbq.loaded) {
+      var fbds = document.createElement('script');
+      fbds.async = true;
+      fbds.src = '//connect.facebook.net/en_US/fbds.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(fbds, s);
+      _fbq.loaded = true;
+    }
+    _fbq.push(['addPixelId', '295556487279234']);
+  })();
+  window._fbq = window._fbq || [];
+  window._fbq.push(['track', 'PixelInitialized', {}]);
+</script>
+    
+  </head>
+  <body class="style-a">
+    
+    <script>
+    GSS_CONFIG = {
+      worker: "/bower_components/gss/dist/worker.js",
+      defaultStrength: "weak",
+      fractionalPixels: false
+    }
+    </script>
+    <script src="/bower_components/gss/dist/gss.js"></script>        
+    <script src="/js/script.js"></script>
+    <script src="/js/vendor/classie.js"></script>
+    
+    <style type="text/gss">
+
+    [Wwin] == ::window[width] == body[width] !require;
+    [Hwin] == ::window[height] == body[height] !require;
+
+    [breakpoint1] == 900 !require;
+    
+    [content-right] == ::window[center-x] + [max-p-width] / 2 !require;
+    [content-left] == ::window[center-x] - [max-p-width] / 2 !require;
+
+    @if [Wwin] >= [breakpoint1] {
+      [baseline] == 30 !require;
+      [top-margin] == [baseline] * 4 !require;
+      [bottom-margin] == [baseline] * 4 !require;
+      [col-size] == [Wwin] / 12 !strong;
+      [col-size] <= 72 !require;
+      [max-p-width] == 720 !require;      
+      [title-font-size] == 65 !require;
+      [subtitle-font-size] == 18 !require;
+      [content-font-size] == 20 !require;
+      [button-font-size] == 26 !require;
+      [large-content-font-size] == 24 !require;
+      [large-content-line-height] == 36 !require;
+      
+    } @else {
+      [baseline] == 24 !require;
+      [top-margin] == [baseline] * 3 !require;
+      [bottom-margin] == [baseline] * 2 !require;
+      [col-size] == [Wwin] / 6 !require;
+      [max-p-width] == [col-size] * 5 !require;
+      [title-font-size] == 35 !require;
+      [subtitle-font-size] == 14 !require;
+      [content-font-size] == 16 !require;
+      [button-font-size] == 20 !require;
+      [large-content-font-size] == 20 !require;
+      [large-content-line-height] == 30 !require;
+    }
+    
+    button, .button {
+      font-size: == [button-font-size];
+    }
+    
+    @vertical section;
+
+    section {
+      overflow: hidden;
+      top: >= ::window[top];
+  
+      /*height: >= 500;*/
+      @horizontal |[::]| in(::window) !require;    
+  
+  
+      header {
+        
+        height: == ::[intrinsic-height] !require;
+        top: == ::parent[top] + [top-margin] !strong;        
+        @horizontal |-[::]-| in(::parent) gap([col-size]);    
+    
+        /* bridge vars b/c no floats */
+        bottom: == ::parent[title-bottom];
+        /*bottom: <= ::parent[bottom] - [top-margin];*/
+    
+        h2 {
+          font-size: == [subtitle-font-size];          
+        }
+        h1 {
+          font-size: == [title-font-size];
+          margin-bottom: == [baseline] / 2;
+        }
+      }
+  
+      .content h2 {
+        font-size: == [subtitle-font-size] * 1.9;
+        padding: == [baseline];
+        margin-top: == [baseline] * 2;
+      }
+  
+      
+  
+      .content {
+        bottom: <= ::parent[bottom] - [bottom-margin] !medium;
+        
+        font-size: == [content-font-size];
+        line-height: == [baseline];
+        top: == ::parent[title-bottom] + [baseline];
+        height: == ::[intrinsic-height];
+        width: <= [max-p-width];
+        center-x: == ::parent[center-x] !medium;
+        x: == ::[content-left];
+      }
+  
+      p, blockquote, pre, h2, ul, ol {
+        margin-bottom: == [baseline];
+      }  
+  
+    }
+    
+    
+    .cols-2 {
+      -webkit-column-count: 2;
+         -moz-column-count: 2;
+              column-count: 2;
+      -webkit-column-gap: == [baseline];
+         -moz-column-gap: == [baseline];
+              column-gap: == [baseline];
+    }
+    
+    ul.large-list {                
+      li {        
+        margin-bottom: == [large-content-font-size];
+        text-align: left;                      
+      }
+    }
+    
+    .large-font, .large-list li {
+      font-family: "adelle", georgia, serif;
+      font-size: == [large-content-font-size];
+      line-height: == [large-content-line-height];
+    }
+      
+
+    /* */
+    </style>
+    
+    
+    <section class="section color-b" id="c_101">
+      
+      <header>
+        <h1>Constraint CSS</h1>
+        <h2 class="subtitle">lay it out like it's 1999</h2>
+      </header>
+      
+      <div class="content">
+        <p>Soon after the W3C introduced Cascading Style Sheets, <a href="http://www.badros.com/greg/">Greg Badros</a>, the author of the Cassowary Constraint Solver &amp; <a href="http://allthingsd.com/20130920/facebook-engineering-and-products-vp-greg-badros-to-leave-company/">recently retired Facebook VP</a>, proposed <a href="http://www.cs.washington.edu/research/constraints/web/ccss-uwtr.pdf">Constraint CSS (CCSS)</a> as a general solution for CSS layout.  Back in &#39;99 Badros demonstrated <em>responsive</em> layouts with CCSS that today&#39;s designers still can&#39;t reproduce without grinding out piles of JavaScript.  For more than a decade, no one seemed to take notice outside academia... Until Apple implemented Cassowary &amp; Greg&#39;s pioneering concepts in its new AutoLayout engine with the launch of OS X Lion. Despite the evolutionary leap for app developers, web designer&#39;s have had to settle with <a href="http://www.sitepoint.com/give-floats-the-flick-in-css-layouts/">float-based</a> &amp; table-based layouts that have remained unimproved to this day.  </p>
+
+<blockquote>
+<p>&quot;We should contemplate how very, very far behind the web platform is in making it delightful to build the sorts of things that are work-a-day in native environments.&quot; <a href="http://infrequently.org/2012/02/misdirection/">Alex Russell</a></p>
+</blockquote>
+
+<p>The foundation of GSS is a modernized implementation of CCSS.  From CCSS primitives other, more exotic layout API&#39;s can and are accomplished.</p>
+
+<h2>Constraints, the basics</h2>
+
+<p>Constraints express relationships between variables that may or may not hold.  You can constrain any numerical style property of an element, not just its position &amp; size.  For example, if I want all paragraph tags to have line-height greater than 16px and less than 1/12th the size of the window:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">p</span><span class="o">[</span><span class="nt">line-height</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">16</span><span class="o">;</span>
+<span class="nt">p</span><span class="o">[</span><span class="nt">line-height</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">/</span> <span class="nt">12</span><span class="o">;</span></code></pre></div>
+
+<p>or, we could write it as a single chained statement:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">16</span> <span class="o">&lt;=</span> <span class="nt">p</span><span class="o">[</span><span class="nt">line-height</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">/</span> <span class="nt">12</span><span class="o">;</span></code></pre></div>
+
+<p>or, we could express the same constraints within a CSS ruleset alongside old-school CSS like so:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">p</span> <span class="p">{</span>
+  <span class="k">color</span><span class="o">:</span> <span class="nb">purple</span><span class="p">;</span>
+  <span class="k">line-height</span><span class="o">:</span> <span class="o">&gt;=</span> <span class="m">16</span><span class="p">;</span>
+  <span class="k">line-height</span><span class="o">:</span> <span class="o">&lt;=</span> <span class="o">::</span><span class="n">window</span><span class="p">[</span><span class="k">height</span><span class="p">]</span> <span class="o">/</span> <span class="m">12</span><span class="p">;</span>  
+<span class="p">}</span></code></pre></div>
+
+<p>of course, you can nest rules too:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.content</span> <span class="p">{</span>
+  
+  <span class="k">margin-right</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="n">parent</span><span class="p">[</span><span class="k">margin-right</span><span class="p">]</span> <span class="o">*</span> <span class="m">-1</span><span class="p">;</span>
+  
+  <span class="n">p</span><span class="o">,</span> <span class="n">blockquote</span> <span class="err">{</span>
+    <span class="k">color</span><span class="o">:</span> <span class="nb">purple</span><span class="p">;</span>
+    <span class="k">line-height</span><span class="o">:</span> <span class="o">&gt;=</span> <span class="m">16</span><span class="p">;</span>
+    <span class="k">line-height</span><span class="o">:</span> <span class="o">&lt;=</span> <span class="o">::</span><span class="n">window</span><span class="p">[</span><span class="k">height</span><span class="p">]</span> <span class="o">/</span> <span class="m">12</span><span class="p">;</span>  
+  <span class="p">}</span>
+<span class="err">}</span></code></pre></div>
+
+<p>Numbers are treated as pixel values except for properties like:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.sprite</span> <span class="p">{</span>
+  <span class="k">z-index</span><span class="o">:</span> <span class="o">&gt;=</span> <span class="m">#bg</span><span class="p">[</span><span class="k">z-index</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="m">50</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+<h2>Constraints are 2-way</h2>
+
+<p>Do not confuse an equality constraint with your everyday variable assignment.  For example, in a vanilla programming paradigm:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// vanilla programming</span>
+
+<span class="nx">x</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span>
+<span class="nx">y</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nx">x</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+<span class="c1">// x =&gt; 100, y =&gt; 10</span></code></pre></div>
+
+<p>x will be 100, and y will be 10.  With constraint programming, equality constraints are two-way, so:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// constraint programming</span>
+
+<span class="nx">x</span> <span class="o">==</span> <span class="nx">y</span><span class="p">;</span>
+<span class="nx">x</span> <span class="o">==</span> <span class="mi">100</span><span class="p">;</span>
+<span class="nx">y</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="c1">// x =&gt; 100, y =&gt; 100</span></code></pre></div>
+
+<p>x and y have a constraint to be equal, so x and y will be 100.  </p>
+
+<p>Constraints are incrementally added to a <code>solver</code>, then the solver computes a feasible &amp; optimal solution to all the constraints.  With constraint programming you input the <em>what</em> you want to happen, not <em>how</em> it will happen. With procedural programming, you focus on the <em>how</em>.  This makes constraints a perfect fit for empowering declarative languages like CSS.</p>
+
+<h2>Custom Constraint Variables</h2>
+
+<p>A custom constraint variable can be created by simply using it in a constraint.</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.post</span> <span class="p">{</span>
+  <span class="k">width</span><span class="o">:</span> <span class="o">==</span> <span class="m">6</span> <span class="o">*</span> <span class="p">[</span><span class="n">col</span><span class="o">-</span><span class="k">size</span><span class="p">];</span>
+<span class="p">}</span></code></pre></div>
+
+<p>This automatically defines the constraint variable <code>[col-size]</code> that can be be re-used in other constraints.  </p>
+
+<h2>Custom Element Constraint Variables</h2>
+
+<p>You can create a custom variable for an element by, again, simply using it:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.post</span><span class="o">[</span><span class="nt">col-size</span><span class="o">]</span> <span class="o">==</span> <span class="nc">.post</span><span class="o">[</span><span class="nt">line-height</span><span class="o">]</span> <span class="o">*</span> <span class="nt">3</span><span class="o">;</span></code></pre></div>
+
+<p>This will automatically create a <code>[col-size]</code> variable for each element with the class post, and constrain it to be the same as 3 times that post&#39;s line-height.  Don&#39;t forget this relationship is 2-way, so further constraining a post&#39;s [col-size] can affect its line-height, which can be remedied using by taking advantage of the &quot;Constraint Hierarchy&quot; with <a href="">Strengths</a> or <a href="#stays">Stays</a>.</p>
+
+<h2>Global Scope</h2>
+
+<p>Constraint variables are defined in a global scope, as is right in the constraint-based world.  So, all uses of <code>[col-size]</code> below refer to the same constraint variable.</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* the !require strength ensures this constraint will hold */</span>
+<span class="o">[</span><span class="nt">col-size</span><span class="o">]</span> <span class="o">==</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">/</span> <span class="nt">12</span> <span class="o">!</span><span class="nt">require</span><span class="o">;</span> 
+
+<span class="nc">.menu</span> <span class="p">{</span>
+  <span class="k">width</span><span class="o">:</span> <span class="o">==</span> <span class="p">[</span><span class="n">col</span><span class="o">-</span><span class="k">size</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="nc">.post</span> <span class="p">{</span>
+  <span class="k">width</span><span class="o">:</span> <span class="o">==</span> <span class="m">6</span> <span class="o">*</span> <span class="p">[</span><span class="n">col</span><span class="o">-</span><span class="k">size</span><span class="p">];</span>  
+  <span class="n">h1</span> <span class="err">{</span>
+    <span class="k">padding-left</span><span class="o">:</span> <span class="o">==</span> <span class="p">[</span><span class="n">col</span><span class="o">-</span><span class="k">size</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="err">}</span></code></pre></div>
+
+<h2>Hardware Accelerated Layout Variables</h2>
+
+<p>By default, GSS uses Matrix3D transforms to hardware accelerate the browsers that can.  The following position properties are treated specially:</p>
+
+<ul>
+<li><code>x</code> or <code>left</code></li>
+<li><code>y</code> or <code>top</code></li>
+<li><code>right</code></li>
+<li><code>bottom</code></li>
+<li><code>center-x</code></li>
+<li><code>center-y</code></li>
+</ul>
+
+<h2>Special Pseudo Selectors</h2>
+
+<ul>
+<li><code>::window</code></li>
+<li><code>::</code> or <code>::this</code></li>
+<li><code>::parent</code></li>
+</ul>
+
+<p>The this and parent selectors can only be used in a nested ruleset, as with:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.box</span> <span class="p">{</span>
+  <span class="k">width</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="n">parent</span><span class="p">[</span><span class="k">width</span><span class="p">];</span>
+  <span class="k">line-height</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="p">[</span><span class="k">width</span><span class="p">]</span> <span class="o">/</span> <span class="m">12</span><span class="p">;</span>  <span class="c">/* same as ::this[width] */</span>
+<span class="p">}</span></code></pre></div>
+
+<p><strong>PRO TIP:</strong> parent selectors can be used to &quot;bridge&quot; variables in interesting ways.  Also a recommended practice is to prefix custom element variables with <code>$</code> to avoid confusion with native CSS properties.  A contrived example:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#product</span> <span class="p">{</span>
+  
+  <span class="err">$</span><span class="n">col</span><span class="o">-</span><span class="k">width</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="p">[</span><span class="k">width</span><span class="p">]</span> <span class="o">/</span> <span class="m">12</span> <span class="o">!</span><span class="n">require</span><span class="p">;</span>
+  <span class="err">$</span><span class="n">col</span><span class="o">-</span><span class="k">left</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="p">[</span><span class="k">left</span><span class="p">]</span> <span class="o">+</span> <span class="o">::</span><span class="p">[</span><span class="err">$</span><span class="n">col</span><span class="o">-</span><span class="k">width</span><span class="p">];</span>
+  
+  <span class="o">.</span><span class="n">price</span> <span class="err">{</span>
+    <span class="k">left</span><span class="o">:</span>  <span class="o">==</span> <span class="o">::</span><span class="n">parent</span><span class="p">[</span><span class="err">$</span><span class="n">col</span><span class="o">-</span><span class="k">left</span><span class="p">];</span>
+    <span class="k">width</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="n">parent</span><span class="p">[</span><span class="err">$</span><span class="n">col</span><span class="o">-</span><span class="k">width</span><span class="p">];</span>
+  <span class="p">}</span>
+  
+  <span class="nc">.description</span> <span class="p">{</span>
+    <span class="k">left</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="n">parent</span><span class="p">[</span><span class="err">$</span><span class="n">col</span><span class="o">-</span><span class="k">left</span><span class="p">]</span> <span class="o">+</span> <span class="o">::</span><span class="n">parent</span><span class="p">[</span><span class="err">$</span><span class="n">col</span><span class="o">-</span><span class="k">width</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="err">}</span></code></pre></div>
+
+<h2>Intrinsic Properties</h2>
+
+<p>What if we want an paragraph&#39;s height to be the <em>intrinsic</em> height of its text content?  We use an <code>intrinsic</code> property!</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* all paragraphs will have a height equal to its text-height */</span>
+
+<span class="nt">p</span> <span class="p">{</span>
+  <span class="k">height</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="p">[</span><span class="n">intrinsic</span><span class="o">-</span><span class="k">height</span><span class="p">];</span>
+<span class="p">}</span></code></pre></div>
+
+<p>When you add <code>intrinsic-</code> before a property, GSS will try to measure that property from the DOM every time it needs to solve for new values, as when a paragraph text-content changes or when the window size changes &amp; you used <code>::window</code> somewhere.  GSS uses a deferred run loop to avoid serial DOM read / writes, but reading the DOM can always cost perf.</p>
+
+<p><strong>PRO TIP:</strong> minimize use of intrinsic properties.  For example, best to hardcode image width &amp; height in equality constraints if can be known ahead of time.</p>
+
+<h2>Strengths</h2>
+
+<p>Stronger constraints completely overcome weaker ones - this is the phenomena of the <a href="http://www.cs.washington.edu/research/constraints/theory/hierarchies-92.html">Constraint Hierarchy</a>.  Strengths are declared in the same fashion of CSS&#39;s <code>!important</code>:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* Stronger constraints completely overcome weaker ones */</span>
+
+<span class="nf">#light</span><span class="o">[</span><span class="nt">years</span><span class="o">]</span> <span class="o">==</span> <span class="nt">100</span> <span class="o">!</span><span class="nt">weak</span><span class="o">;</span>
+<span class="nf">#light</span><span class="o">[</span><span class="nt">years</span><span class="o">]</span> <span class="o">==</span> <span class="nt">200</span> <span class="o">!</span><span class="nt">medium</span><span class="o">;</span>
+<span class="nf">#light</span><span class="o">[</span><span class="nt">years</span><span class="o">]</span> <span class="o">==</span> <span class="nt">300</span> <span class="o">!</span><span class="nt">strong</span><span class="o">;</span>
+
+<span class="c">/* #light[years] will be 300 */</span></code></pre></div>
+
+<p>There are 4 levels of built-in strength:</p>
+
+<ul>
+<li><code>!weak</code></li>
+<li><code>!medium</code></li>
+<li><code>!strong</code></li>
+<li><code>!require</code></li>
+</ul>
+
+<p>All constraints have a strength.  <code>!weak</code> is the default for all constraints.</p>
+
+<p><code>!require</code> is a special strength that guarantees the constraint will hold, otherwise everything breaks.</p>
+
+<p><strong>Pro Tip</strong> Use <code>!require</code> carefully &amp; sparingly.  <code>!require</code>&#39;s quickly lead to systems where all required constraints cannot be satisfied.</p>
+
+<h2>Weights</h2>
+
+<p>Constraints of the same strength can be made relatively stronger or weaker with weights, like so:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* Constraints of the same strength... */</span>
+
+<span class="nf">#planet</span><span class="o">[</span><span class="nt">weight</span><span class="o">]</span> <span class="o">==</span> <span class="nt">600</span> <span class="o">!</span><span class="nt">medium1000</span><span class="o">;</span> 
+<span class="nf">#planet</span><span class="o">[</span><span class="nt">weight</span><span class="o">]</span> <span class="o">==</span> <span class="nt">30</span> <span class="o">!</span><span class="nt">medium</span><span class="o">;</span>
+<span class="nf">#planet</span><span class="o">[</span><span class="nt">weight</span><span class="o">]</span> <span class="o">==</span> <span class="nt">10</span> <span class="o">!</span><span class="nt">medium</span><span class="o">;</span>
+<span class="nf">#planet</span><span class="o">[</span><span class="nt">weight</span><span class="o">]</span> <span class="o">==</span> <span class="nt">20</span> <span class="o">!</span><span class="nt">medium</span><span class="o">;</span>
+
+<span class="c">/* #planet[weight] will be 600 */</span></code></pre></div>
+
+<p><code>#planet[weight]</code> will be 600.  The first constraint has an additional weight of <code>1000</code> used in calculating its potential error, making not satisfying it more costly.</p>
+
+<h2>Ambiguity</h2>
+
+<p><code>bottom</code> &amp; <code>right</code> are expressions of position &amp; size, which can lead to ambiguous constraints like:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#box</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">==</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span>
+
+<span class="c">/* this is too ambiguous without constraining #box[width] or #box[left] */</span></code></pre></div>
+
+<p>Should the box move its position to the right or stretch its width to make its right edge flush with the window?  A critical best practice is to <em>fully constrain</em> an element, in other words, you should adequately specify an element&#39;s position &amp; size.  If an element is under-constrained you will have unpredictable results. </p>
+
+<h2>Stays</h2>
+
+<p>Ambiguity can be largely overcome by declaring more constraints, but what about situations like:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#box</span><span class="o">[</span><span class="nt">left</span><span class="o">]</span>  <span class="o">&gt;=</span> <span class="nt">100</span><span class="o">;</span>
+<span class="nf">#box</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">100</span><span class="o">;</span>
+<span class="nf">#box</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">==</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span>
+
+<span class="c">/* the #box&#39;s width will stretch */</span></code></pre></div>
+
+<p>Will the <code>#box</code> move or stretch to satisfy the last constraint?  Again, the earlier constraint statements are more powerful than later ones, so the box&#39;s width would stretch.  You can control this by either changing the order in which the constraints are declared or by using a <code>stay</code> like so:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#box</span><span class="o">[</span><span class="nt">left</span><span class="o">]</span>  <span class="o">&gt;=</span> <span class="nt">100</span><span class="o">;</span>
+<span class="nf">#box</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">100</span><span class="o">;</span>
+<span class="k">@stay</span><span class="o">(</span><span class="nf">#box</span><span class="o">[</span><span class="nt">width</span><span class="o">])</span><span class="p">;</span>
+<span class="nf">#box</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">==</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span>
+
+<span class="c">/* the #box&#39;s position will move */</span></code></pre></div>
+
+<p>Many <code>stay</code>s can be declared at once with <code>@stay([var1],[var2],[var3])</code>.</p>
+
+<h2>Minimized Total Error</h2>
+
+<p>For constraints at the same strength, GSS tries to minimize the degree to which all constraints are not satisfied.  Internally, Cassowary finds what&#39;s called a &quot;locally-error-better&quot;, &quot;weighted-sum-better&quot; solution to constraints.  As an example,</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* Constraints of the same strength... */</span>
+
+<span class="nf">#laser</span><span class="o">[</span><span class="nt">amo</span><span class="o">]</span> <span class="o">==</span> <span class="nt">1</span> <span class="o">!</span><span class="nt">strong</span><span class="o">;</span>
+<span class="nf">#laser</span><span class="o">[</span><span class="nt">amo</span><span class="o">]</span> <span class="o">==</span> <span class="nt">2</span> <span class="o">!</span><span class="nt">strong</span><span class="o">;</span>
+<span class="nf">#laser</span><span class="o">[</span><span class="nt">amo</span><span class="o">]</span> <span class="o">==</span> <span class="nt">3</span> <span class="o">!</span><span class="nt">strong</span><span class="o">;</span>
+
+<span class="c">/* #laser[amo] will be 2 */</span></code></pre></div>
+
+<p><code>#laser[amo]</code> will be 2 because that minimizes the total degree to which all constraints would not be satisfied, or the total of each constraint&#39;s &quot;error&quot;.  </p>
+
+<p><strong>When <code>#laser[amo]</code> is 2</strong>; the first constraint has error of 1, the second has an error of 0 &amp; the third has error of 1, <strong>total error = 2</strong>.  </p>
+
+<p><strong>If <code>#laser[amo]</code> was 3</strong>; the first constraint has error of 0, the second with 1 &amp; the third with 2, <strong>total error = 3</strong>.  </p>
+
+<p>The total error is always minimized.</p>
+
+<h2>Linear Arithmetic</h2>
+
+<p>Cassowary only allows for &quot;Linear Arithmetic&quot; constraints, you can do simple math operations like <code>+</code>, <code>-</code>, <code>*</code> and <code>/</code>, but all expressions must be linear (of the form <code>y = mx + b</code>).  Basically, you can do most things except multiply or divide two constraint variables.  </p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* this is not linear &amp; will throw an error */</span>
+
+<span class="nf">#box1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">/</span> <span class="nf">#box1</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#box2</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">/</span> <span class="nf">#2box</span><span class="o">[</span><span class="nt">height</span><span class="o">];</span></code></pre></div>
+
+<p>I wish we could go non-linear, but we can&#39;t because math.</p>
+
+        
+      </div>
+    </section>    
+    
+    <!-- Top Nav -->
+
+<div id="nav" class="trans fixed">
+  <style type="text/gss">
+
+    .badge {
+      width: == 45.142;
+      height: == 48;
+    }
+    @if [Wwin] >= [breakpoint1] {
+      #nav {
+        .badge {
+         top: == 0 - 4;
+         center-x: == ::window[center-x];
+        }
+      }
+    }
+    @else {
+      #nav {
+        .badge {
+         top: == 0 - 4;
+         right: == ::window[left];
+        }
+      }
+    }
+    #sidenav-menu-button {
+      margin-top: -5px !important;
+      width: == ::[intrinsic-width];
+      height: == ::[intrinsic-height];
+      center-x: == 0 - ::window[center-y] - ::[width] / 2;
+    }
+
+  </style>
+  <style>
+    #top-badge {
+      display:none;
+    }
+    #nav, #sidenav {
+      z-index: 100;
+    }
+
+    #sidenav-menu-button-wrap {
+      -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+             transform: rotate(-90deg);
+    }
+    .scrolled-down #nav {
+      -webkit-transform: translateY(-72px);
+      -moz-transform: translateY(-72px);
+      transform: translateY(-72px);
+    }
+    .scrolled-up #nav {
+      -webkit-transform: translateY(0px);
+      -moz-transform: translateY(0px);
+      transform: translateY(0px);
+    }
+    .app-show-menu #nav {
+      -webkit-transform: translateY(0px) !important;
+         -moz-transform: translateY(0px) !important;
+              transform: translateY(0px) !important;
+    }
+
+    .scrolled-down #sidenav {
+      -webkit-transform: translateX(-72px);
+         -moz-transform: translateX(-72px);
+              transform: translateX(-72px);
+    }
+    .scrolled-up #sidenav {
+      -webkit-transform: translateX(0px);
+      -moz-transform: translateX(0px);
+      transform: translateX(0px);
+    }
+    .app-show-menu #sidenav {
+      -webkit-transform: translateX(-72px) !important;
+         -moz-transform: translateX(-72px) !important;
+              transform: translateX(-72px) !important;
+    }
+    .app-show-menu #menu {
+      margin-left: 0 !important;
+    }
+    #menu {
+      margin-left: -100% !important;
+      -webkit-transition: margin .3s;
+         -moz-transition: margin .3s;
+              transition: margin .3s;
+
+
+    }
+    .app-show-menu #hide-menu-button {
+      margin-left: 0 !important;
+    }
+    #hide-menu-button {
+      margin-left: -100% !important;
+      margin-left: -100% !important;
+      -webkit-transition: margin 600ms cubic-bezier(0.080, 0.615, 0.355, 1); /* older webkit */
+      -webkit-transition: margin 600ms cubic-bezier(0.080, 0.615, 0.355, 1.100);
+         -moz-transition: margin 600ms cubic-bezier(0.080, 0.615, 0.355, 1.100);
+           -o-transition: margin 600ms cubic-bezier(0.080, 0.615, 0.355, 1.100);
+              transition: margin 600ms cubic-bezier(0.080, 0.615, 0.355, 1.100); /* custom */
+
+      -webkit-transition-timing-function: cubic-bezier(0.080, 0.615, 0.355, 1); /* older webkit */
+      -webkit-transition-timing-function: cubic-bezier(0.080, 0.615, 0.355, 1.100);
+         -moz-transition-timing-function: cubic-bezier(0.080, 0.615, 0.355, 1.100);
+           -o-transition-timing-function: cubic-bezier(0.080, 0.615, 0.355, 1.100);
+              transition-timing-function: cubic-bezier(0.080, 0.615, 0.355, 1.100); /* custom */
+    }
+  </style>
+  <a id="top-badge" href="/">
+    <svg class="badge badge-icon trans"
+    	 width="45.142px" height="48px" version="1.1" xmlns="http://www.w3.org/2000/svg" baseProfile="full">
+    <g>
+    	<path d="M11.991,34.812l10.595,2.902l10.453-2.874l1.185-13.159l-11.638-0.001v5.193h6.06l-0.425,3.959l-5.636,1.508l-5.777-1.536
+    		l-1.454-17.127h7.242v0.002h7.356l-0.317,4.251h4.954l0.842-9.353H22.626V8.575H9.719L11.991,34.812z M0,0l4.279,42.998L21.951,48
+    		l18.912-5.002L45.142,0H0z M36.765,39.919l-14.814,3.634L8.036,39.235L4.44,3.992h36.263L36.765,39.919z"/>
+    </g>
+    </svg>
+  </a>
+</div>
+
+<!-- <div id="sidenav" class="fixed trans"> -->
+<!--   <div id="sidenav-menu-button-wrap" class="trans"> -->
+<!--     <button id="sidenav-menu-button" class="app-menu-trigger transparent">Menu</button> -->
+<!--   </div> -->
+<!-- </div> -->
+
+<!-- <div id="menu" class="color-menu trans fixed"> -->
+<!--   <style type="text/gss"> -->
+
+<!--     /* structure */ -->
+<!--     #menu { -->
+<!--       top: == 0 !require; -->
+<!--       left: == 0 !require; -->
+<!--       bottom: == ::window[bottom] !require; -->
+<!--       overflow-y: auto; -->
+<!--       overflow-x: hidden; -->
+
+<!--       ul { -->
+<!--         top: >=0 !require; -->
+<!--         height: == ::[intrinsic-height]; -->
+<!--         center-y: == ::window[center-y]; -->
+<!--         padding: == 2 * [baseline]; -->
+<!--         width: == ::[intrinsic-width]; -->
+<!--         left: == #hide-menu-button[right]; -->
+<!--         right: == ::parent[right] - #hide-menu-button[width]; -->
+
+<!--         li { -->
+<!--         text-align: center; -->
+<!--         } -->
+<!--       } -->
+<!--     } -->
+
+<!--     #hide-menu-button { -->
+<!--       width: == ::[intrinsic-width]; -->
+<!--       height: == ::[intrinsic-height]; -->
+<!--       center-y: == #menu[center-y]; -->
+<!--       left: == #menu[left]; -->
+<!--     } -->
+
+
+<!--   </style> -->
+<!--   <ul class="large-list"> -->
+<!--     <li> -->
+<!--       <a href="/">sorpa'as</a> -->
+<!--     </li> -->
+<!--     <li> -->
+<!--       <a href="http://blog.sorpaas.com">Blog</a> -->
+<!--     </li> -->
+<!--     <li> -->
+<!--       <a href="/about">About</a> -->
+<!--     </li> -->
+<!--     <\!--li> -->
+<!--       <a href="/demos/">Demos</a> -->
+<!--     </li-\-> -->
+<!--     <\!--li> -->
+<!--       <a href="/#features">Features</a> -->
+<!--     </li> -->
+<!--     <li> -->
+<!--       <a href="/#about">About</a> -->
+<!--     </li-\-> -->
+<!--     <\!--li> -->
+<!--       <a href="/guides/ccss">CCSS</a> -->
+<!--     </li> -->
+<!--     <li> -->
+<!--       <a href="/guides/vfl">VFL</a> -->
+<!--     </li> -->
+<!--     <li> -->
+<!--       <a href="/guides/ifelse">@if @else</a> -->
+<!--     </li-\-> -->
+<!--   </ul> -->
+<!-- </div> -->
+
+<button id="hide-menu-button" class="app-menu-trigger fixed">X</button>
+
+  
+    <script type="text/javascript">
+    adroll_adv_id = "MW5HZIP5UVFRZNJVKSPCR4";
+    adroll_pix_id = "2DYOCKCHRVCTZGO3SGMR5U";
+    (function () {
+    var oldonload = window.onload;
+    window.onload = function(){
+        __adroll_loaded=true;
+        var scr = document.createElement("script");
+        var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+        scr.setAttribute('async', 'true');
+        scr.type = "text/javascript";
+        scr.src = host + "/j/roundtrip.js";
+        ((document.getElementsByTagName('head') || [null])[0] ||
+        document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+        if(oldonload){oldonload()}};
+    }());
+    </script>
+    <script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        twttr.conversion.trackPid('l4ki6');
+    </script>
+    <noscript>
+    <img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4ki6&p_id=Twitter" />
+    <img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l4ki6&p_id=Twitter" />
+    </noscript>
+  </body>
+</html>
+
