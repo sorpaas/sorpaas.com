@@ -1,0 +1,4 @@
+[submodule "_site"]
+	path = _site
+	url = git@github.com:sorpaas/sorpaas.com.git
+	branch = gh-pages

@@ -1,4 +1,4 @@
-title: GSS
+title: sorpa'as plat
 permalink: /:categories/:title
 pygments: true
 version: "1.0.4-beta"
@@ -6,5 +6,6 @@ markdown: redcarpet
 exclude:
   - "README.md"
   - "Gruntfile.coffee"
+  - "Rakefile"
   - "node_modules"
   - "*.psd"
