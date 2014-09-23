@@ -200,7 +200,7 @@
 
 <p>As an example, if we wanted a set of CSS rules to kick when the screen is less than 960px:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* GSS: */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* GSS: */</span>
 <span class="k">@if</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">&lt;</span> <span class="nt">960</span> <span class="p">{</span>
   <span class="c">/* ... */</span>
 <span class="p">}</span>
@@ -208,11 +208,12 @@
 <span class="c">/* Old-school Media Queries: */</span>
 <span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">960px</span><span class="o">)</span> <span class="p">{</span>
   <span class="c">/* ... */</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>But, any property can be used within an <code>@if</code>, <code>@else</code> conditional.  So, if you want a layout to be responsive to a panel&#39;s width:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* GSS: */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* GSS: */</span>
 <span class="k">@if</span> <span class="nf">#panel</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">800</span> <span class="p">{</span>
   <span class="c">/* ... */</span>
 <span class="p">}</span>
@@ -223,9 +224,10 @@
   <span class="c">/* ... */</span>
 <span class="p">}</span>
 
-<span class="c">/* Not possible with Media Queries */</span></code></pre></div>
+<span class="c">/* Not possible with Media Queries */</span>
+</code></pre></div>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@if</span> <span class="nf">#panel</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">500</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="css"><span class="k">@if</span> <span class="nf">#panel</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">500</span> <span class="p">{</span>
   <span class="k">@horizontal</span> <span class="nc">.item</span><span class="p">;</span>  
   <span class="nf">#button</span> <span class="p">{</span>
     <span class="k">font-size</span><span class="o">:</span> <span class="o">==</span> <span class="m">18</span><span class="p">;</span>
@@ -236,9 +238,10 @@
   <span class="nf">#button</span> <span class="p">{</span>
     <span class="k">font-size</span><span class="o">:</span> <span class="o">==</span> <span class="m">14</span><span class="p">;</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#box1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nt">9</span><span class="o">;</span>
+<div class="highlight"><pre><code class="css"><span class="nf">#box1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nt">9</span><span class="o">;</span>
 <span class="nf">#box2</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nt">19</span><span class="o">;</span>
 
 <span class="c">/* with ::this pseudo selector */</span> 
@@ -249,9 +252,10 @@
   <span class="k">@else</span> <span class="p">{</span>
     <span class="nt">height</span><span class="o">:</span> <span class="o">==</span> <span class="nt">20</span><span class="o">;</span>
   <span class="p">}</span>
-<span class="err">}</span></code></pre></div>
+<span class="err">}</span>
+</code></pre></div>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="o">[</span><span class="nt">calories</span><span class="o">]</span> <span class="o">==</span> <span class="nt">500</span><span class="o">;</span>
+<div class="highlight"><pre><code class="css"><span class="o">[</span><span class="nt">calories</span><span class="o">]</span> <span class="o">==</span> <span class="nt">500</span><span class="o">;</span>
 
 <span class="c">/* with custom constraint variable */</span> 
 <span class="k">@if</span> <span class="o">[</span><span class="nt">calories</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">960</span> <span class="p">{</span>
@@ -261,7 +265,8 @@
   <span class="nf">#boo</span><span class="o">[</span><span class="nt">hunger</span><span class="o">]</span> <span class="o">==</span> <span class="nt">1000</span><span class="o">;</span> 
 <span class="p">}</span>
 
-<span class="c">/* #boo[hunger] will be 1000 */</span></code></pre></div>
+<span class="c">/* #boo[hunger] will be 1000 */</span> 
+</code></pre></div>
 
 <p>WIP, more coming soon...</p>
 

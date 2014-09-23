@@ -196,24 +196,27 @@
 
 <p>Constraints express relationships between variables that may or may not hold.  You can constrain any numerical style property of an element, not just its position &amp; size.  For example, if I want all paragraph tags to have line-height greater than 16px and less than 1/12th the size of the window:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">p</span><span class="o">[</span><span class="nt">line-height</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">16</span><span class="o">;</span>
-<span class="nt">p</span><span class="o">[</span><span class="nt">line-height</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">/</span> <span class="nt">12</span><span class="o">;</span></code></pre></div>
+<div class="highlight"><pre><code class="css"><span class="nt">p</span><span class="o">[</span><span class="nt">line-height</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">16</span><span class="o">;</span>
+<span class="nt">p</span><span class="o">[</span><span class="nt">line-height</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">/</span> <span class="nt">12</span><span class="o">;</span>
+</code></pre></div>
 
 <p>or, we could write it as a single chained statement:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">16</span> <span class="o">&lt;=</span> <span class="nt">p</span><span class="o">[</span><span class="nt">line-height</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">/</span> <span class="nt">12</span><span class="o">;</span></code></pre></div>
+<div class="highlight"><pre><code class="css"><span class="nt">16</span> <span class="o">&lt;=</span> <span class="nt">p</span><span class="o">[</span><span class="nt">line-height</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">/</span> <span class="nt">12</span><span class="o">;</span>
+</code></pre></div>
 
 <p>or, we could express the same constraints within a CSS ruleset alongside old-school CSS like so:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">p</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="css"><span class="nt">p</span> <span class="p">{</span>
   <span class="k">color</span><span class="o">:</span> <span class="nb">purple</span><span class="p">;</span>
   <span class="k">line-height</span><span class="o">:</span> <span class="o">&gt;=</span> <span class="m">16</span><span class="p">;</span>
   <span class="k">line-height</span><span class="o">:</span> <span class="o">&lt;=</span> <span class="o">::</span><span class="n">window</span><span class="p">[</span><span class="k">height</span><span class="p">]</span> <span class="o">/</span> <span class="m">12</span><span class="p">;</span>  
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>of course, you can nest rules too:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.content</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="css"><span class="nc">.content</span> <span class="p">{</span>
   
   <span class="k">margin-right</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="n">parent</span><span class="p">[</span><span class="k">margin-right</span><span class="p">]</span> <span class="o">*</span> <span class="m">-1</span><span class="p">;</span>
   
@@ -222,35 +225,39 @@
     <span class="k">line-height</span><span class="o">:</span> <span class="o">&gt;=</span> <span class="m">16</span><span class="p">;</span>
     <span class="k">line-height</span><span class="o">:</span> <span class="o">&lt;=</span> <span class="o">::</span><span class="n">window</span><span class="p">[</span><span class="k">height</span><span class="p">]</span> <span class="o">/</span> <span class="m">12</span><span class="p">;</span>  
   <span class="p">}</span>
-<span class="err">}</span></code></pre></div>
+<span class="err">}</span>
+</code></pre></div>
 
 <p>Numbers are treated as pixel values except for properties like:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.sprite</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="css"><span class="nc">.sprite</span> <span class="p">{</span>
   <span class="k">z-index</span><span class="o">:</span> <span class="o">&gt;=</span> <span class="m">#bg</span><span class="p">[</span><span class="k">z-index</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="m">50</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 <h2>Constraints are 2-way</h2>
 
 <p>Do not confuse an equality constraint with your everyday variable assignment.  For example, in a vanilla programming paradigm:</p>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// vanilla programming</span>
+<div class="highlight"><pre><code class="javascript"><span class="c1">// vanilla programming</span>
 
 <span class="nx">x</span> <span class="o">=</span> <span class="nx">y</span><span class="p">;</span>
 <span class="nx">y</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="nx">x</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
 
-<span class="c1">// x =&gt; 100, y =&gt; 10</span></code></pre></div>
+<span class="c1">// x =&gt; 100, y =&gt; 10</span>
+</code></pre></div>
 
 <p>x will be 100, and y will be 10.  With constraint programming, equality constraints are two-way, so:</p>
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// constraint programming</span>
+<div class="highlight"><pre><code class="javascript"><span class="c1">// constraint programming</span>
 
 <span class="nx">x</span> <span class="o">==</span> <span class="nx">y</span><span class="p">;</span>
 <span class="nx">x</span> <span class="o">==</span> <span class="mi">100</span><span class="p">;</span>
 <span class="nx">y</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">;</span>
 
-<span class="c1">// x =&gt; 100, y =&gt; 100</span></code></pre></div>
+<span class="c1">// x =&gt; 100, y =&gt; 100</span>
+</code></pre></div>
 
 <p>x and y have a constraint to be equal, so x and y will be 100.  </p>
 
@@ -260,9 +267,10 @@
 
 <p>A custom constraint variable can be created by simply using it in a constraint.</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.post</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="css"><span class="nc">.post</span> <span class="p">{</span>
   <span class="k">width</span><span class="o">:</span> <span class="o">==</span> <span class="m">6</span> <span class="o">*</span> <span class="p">[</span><span class="n">col</span><span class="o">-</span><span class="k">size</span><span class="p">];</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>This automatically defines the constraint variable <code>[col-size]</code> that can be be re-used in other constraints.  </p>
 
@@ -270,7 +278,8 @@
 
 <p>You can create a custom variable for an element by, again, simply using it:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.post</span><span class="o">[</span><span class="nt">col-size</span><span class="o">]</span> <span class="o">==</span> <span class="nc">.post</span><span class="o">[</span><span class="nt">line-height</span><span class="o">]</span> <span class="o">*</span> <span class="nt">3</span><span class="o">;</span></code></pre></div>
+<div class="highlight"><pre><code class="css"><span class="nc">.post</span><span class="o">[</span><span class="nt">col-size</span><span class="o">]</span> <span class="o">==</span> <span class="nc">.post</span><span class="o">[</span><span class="nt">line-height</span><span class="o">]</span> <span class="o">*</span> <span class="nt">3</span><span class="o">;</span>
+</code></pre></div>
 
 <p>This will automatically create a <code>[col-size]</code> variable for each element with the class post, and constrain it to be the same as 3 times that post&#39;s line-height.  Don&#39;t forget this relationship is 2-way, so further constraining a post&#39;s [col-size] can affect its line-height, which can be remedied using by taking advantage of the &quot;Constraint Hierarchy&quot; with <a href="">Strengths</a> or <a href="#stays">Stays</a>.</p>
 
@@ -278,7 +287,7 @@
 
 <p>Constraint variables are defined in a global scope, as is right in the constraint-based world.  So, all uses of <code>[col-size]</code> below refer to the same constraint variable.</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* the !require strength ensures this constraint will hold */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* the !require strength ensures this constraint will hold */</span>
 <span class="o">[</span><span class="nt">col-size</span><span class="o">]</span> <span class="o">==</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">/</span> <span class="nt">12</span> <span class="o">!</span><span class="nt">require</span><span class="o">;</span> 
 
 <span class="nc">.menu</span> <span class="p">{</span>
@@ -290,7 +299,8 @@
   <span class="n">h1</span> <span class="err">{</span>
     <span class="k">padding-left</span><span class="o">:</span> <span class="o">==</span> <span class="p">[</span><span class="n">col</span><span class="o">-</span><span class="k">size</span><span class="p">];</span>
   <span class="p">}</span>
-<span class="err">}</span></code></pre></div>
+<span class="err">}</span>
+</code></pre></div>
 
 <h2>Hardware Accelerated Layout Variables</h2>
 
@@ -315,14 +325,15 @@
 
 <p>The this and parent selectors can only be used in a nested ruleset, as with:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.box</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="css"><span class="nc">.box</span> <span class="p">{</span>
   <span class="k">width</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="n">parent</span><span class="p">[</span><span class="k">width</span><span class="p">];</span>
   <span class="k">line-height</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="p">[</span><span class="k">width</span><span class="p">]</span> <span class="o">/</span> <span class="m">12</span><span class="p">;</span>  <span class="c">/* same as ::this[width] */</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 <p><strong>PRO TIP:</strong> parent selectors can be used to &quot;bridge&quot; variables in interesting ways.  Also a recommended practice is to prefix custom element variables with <code>$</code> to avoid confusion with native CSS properties.  A contrived example:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#product</span> <span class="p">{</span>
+<div class="highlight"><pre><code class="css"><span class="nf">#product</span> <span class="p">{</span>
   
   <span class="err">$</span><span class="n">col</span><span class="o">-</span><span class="k">width</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="p">[</span><span class="k">width</span><span class="p">]</span> <span class="o">/</span> <span class="m">12</span> <span class="o">!</span><span class="n">require</span><span class="p">;</span>
   <span class="err">$</span><span class="n">col</span><span class="o">-</span><span class="k">left</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="p">[</span><span class="k">left</span><span class="p">]</span> <span class="o">+</span> <span class="o">::</span><span class="p">[</span><span class="err">$</span><span class="n">col</span><span class="o">-</span><span class="k">width</span><span class="p">];</span>
@@ -335,17 +346,19 @@
   <span class="nc">.description</span> <span class="p">{</span>
     <span class="k">left</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="n">parent</span><span class="p">[</span><span class="err">$</span><span class="n">col</span><span class="o">-</span><span class="k">left</span><span class="p">]</span> <span class="o">+</span> <span class="o">::</span><span class="n">parent</span><span class="p">[</span><span class="err">$</span><span class="n">col</span><span class="o">-</span><span class="k">width</span><span class="p">];</span>
   <span class="p">}</span>
-<span class="err">}</span></code></pre></div>
+<span class="err">}</span>
+</code></pre></div>
 
 <h2>Intrinsic Properties</h2>
 
 <p>What if we want an paragraph&#39;s height to be the <em>intrinsic</em> height of its text content?  We use an <code>intrinsic</code> property!</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* all paragraphs will have a height equal to its text-height */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* all paragraphs will have a height equal to its text-height */</span>
 
 <span class="nt">p</span> <span class="p">{</span>
   <span class="k">height</span><span class="o">:</span> <span class="o">==</span> <span class="o">::</span><span class="p">[</span><span class="n">intrinsic</span><span class="o">-</span><span class="k">height</span><span class="p">];</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>When you add <code>intrinsic-</code> before a property, GSS will try to measure that property from the DOM every time it needs to solve for new values, as when a paragraph text-content changes or when the window size changes &amp; you used <code>::window</code> somewhere.  GSS uses a deferred run loop to avoid serial DOM read / writes, but reading the DOM can always cost perf.</p>
 
@@ -355,13 +368,14 @@
 
 <p>Stronger constraints completely overcome weaker ones - this is the phenomena of the <a href="http://www.cs.washington.edu/research/constraints/theory/hierarchies-92.html">Constraint Hierarchy</a>.  Strengths are declared in the same fashion of CSS&#39;s <code>!important</code>:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* Stronger constraints completely overcome weaker ones */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* Stronger constraints completely overcome weaker ones */</span>
 
 <span class="nf">#light</span><span class="o">[</span><span class="nt">years</span><span class="o">]</span> <span class="o">==</span> <span class="nt">100</span> <span class="o">!</span><span class="nt">weak</span><span class="o">;</span>
 <span class="nf">#light</span><span class="o">[</span><span class="nt">years</span><span class="o">]</span> <span class="o">==</span> <span class="nt">200</span> <span class="o">!</span><span class="nt">medium</span><span class="o">;</span>
 <span class="nf">#light</span><span class="o">[</span><span class="nt">years</span><span class="o">]</span> <span class="o">==</span> <span class="nt">300</span> <span class="o">!</span><span class="nt">strong</span><span class="o">;</span>
 
-<span class="c">/* #light[years] will be 300 */</span></code></pre></div>
+<span class="c">/* #light[years] will be 300 */</span>
+</code></pre></div>
 
 <p>There are 4 levels of built-in strength:</p>
 
@@ -382,14 +396,15 @@
 
 <p>Constraints of the same strength can be made relatively stronger or weaker with weights, like so:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* Constraints of the same strength... */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* Constraints of the same strength... */</span>
 
 <span class="nf">#planet</span><span class="o">[</span><span class="nt">weight</span><span class="o">]</span> <span class="o">==</span> <span class="nt">600</span> <span class="o">!</span><span class="nt">medium1000</span><span class="o">;</span> 
 <span class="nf">#planet</span><span class="o">[</span><span class="nt">weight</span><span class="o">]</span> <span class="o">==</span> <span class="nt">30</span> <span class="o">!</span><span class="nt">medium</span><span class="o">;</span>
 <span class="nf">#planet</span><span class="o">[</span><span class="nt">weight</span><span class="o">]</span> <span class="o">==</span> <span class="nt">10</span> <span class="o">!</span><span class="nt">medium</span><span class="o">;</span>
 <span class="nf">#planet</span><span class="o">[</span><span class="nt">weight</span><span class="o">]</span> <span class="o">==</span> <span class="nt">20</span> <span class="o">!</span><span class="nt">medium</span><span class="o">;</span>
 
-<span class="c">/* #planet[weight] will be 600 */</span></code></pre></div>
+<span class="c">/* #planet[weight] will be 600 */</span>
+</code></pre></div>
 
 <p><code>#planet[weight]</code> will be 600.  The first constraint has an additional weight of <code>1000</code> used in calculating its potential error, making not satisfying it more costly.</p>
 
@@ -397,9 +412,10 @@
 
 <p><code>bottom</code> &amp; <code>right</code> are expressions of position &amp; size, which can lead to ambiguous constraints like:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#box</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">==</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span>
+<div class="highlight"><pre><code class="css"><span class="nf">#box</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">==</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span>
 
-<span class="c">/* this is too ambiguous without constraining #box[width] or #box[left] */</span></code></pre></div>
+<span class="c">/* this is too ambiguous without constraining #box[width] or #box[left] */</span>
+</code></pre></div>
 
 <p>Should the box move its position to the right or stretch its width to make its right edge flush with the window?  A critical best practice is to <em>fully constrain</em> an element, in other words, you should adequately specify an element&#39;s position &amp; size.  If an element is under-constrained you will have unpredictable results. </p>
 
@@ -407,20 +423,22 @@
 
 <p>Ambiguity can be largely overcome by declaring more constraints, but what about situations like:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#box</span><span class="o">[</span><span class="nt">left</span><span class="o">]</span>  <span class="o">&gt;=</span> <span class="nt">100</span><span class="o">;</span>
+<div class="highlight"><pre><code class="css"><span class="nf">#box</span><span class="o">[</span><span class="nt">left</span><span class="o">]</span>  <span class="o">&gt;=</span> <span class="nt">100</span><span class="o">;</span>
 <span class="nf">#box</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">100</span><span class="o">;</span>
 <span class="nf">#box</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">==</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span>
 
-<span class="c">/* the #box&#39;s width will stretch */</span></code></pre></div>
+<span class="c">/* the #box&#39;s width will stretch */</span>
+</code></pre></div>
 
 <p>Will the <code>#box</code> move or stretch to satisfy the last constraint?  Again, the earlier constraint statements are more powerful than later ones, so the box&#39;s width would stretch.  You can control this by either changing the order in which the constraints are declared or by using a <code>stay</code> like so:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#box</span><span class="o">[</span><span class="nt">left</span><span class="o">]</span>  <span class="o">&gt;=</span> <span class="nt">100</span><span class="o">;</span>
+<div class="highlight"><pre><code class="css"><span class="nf">#box</span><span class="o">[</span><span class="nt">left</span><span class="o">]</span>  <span class="o">&gt;=</span> <span class="nt">100</span><span class="o">;</span>
 <span class="nf">#box</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">100</span><span class="o">;</span>
 <span class="k">@stay</span><span class="o">(</span><span class="nf">#box</span><span class="o">[</span><span class="nt">width</span><span class="o">])</span><span class="p">;</span>
 <span class="nf">#box</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">==</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span>
 
-<span class="c">/* the #box&#39;s position will move */</span></code></pre></div>
+<span class="c">/* the #box&#39;s position will move */</span>
+</code></pre></div>
 
 <p>Many <code>stay</code>s can be declared at once with <code>@stay([var1],[var2],[var3])</code>.</p>
 
@@ -428,13 +446,14 @@
 
 <p>For constraints at the same strength, GSS tries to minimize the degree to which all constraints are not satisfied.  Internally, Cassowary finds what&#39;s called a &quot;locally-error-better&quot;, &quot;weighted-sum-better&quot; solution to constraints.  As an example,</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* Constraints of the same strength... */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* Constraints of the same strength... */</span>
 
 <span class="nf">#laser</span><span class="o">[</span><span class="nt">amo</span><span class="o">]</span> <span class="o">==</span> <span class="nt">1</span> <span class="o">!</span><span class="nt">strong</span><span class="o">;</span>
 <span class="nf">#laser</span><span class="o">[</span><span class="nt">amo</span><span class="o">]</span> <span class="o">==</span> <span class="nt">2</span> <span class="o">!</span><span class="nt">strong</span><span class="o">;</span>
 <span class="nf">#laser</span><span class="o">[</span><span class="nt">amo</span><span class="o">]</span> <span class="o">==</span> <span class="nt">3</span> <span class="o">!</span><span class="nt">strong</span><span class="o">;</span>
 
-<span class="c">/* #laser[amo] will be 2 */</span></code></pre></div>
+<span class="c">/* #laser[amo] will be 2 */</span>
+</code></pre></div>
 
 <p><code>#laser[amo]</code> will be 2 because that minimizes the total degree to which all constraints would not be satisfied, or the total of each constraint&#39;s &quot;error&quot;.  </p>
 
@@ -448,9 +467,10 @@
 
 <p>Cassowary only allows for &quot;Linear Arithmetic&quot; constraints, you can do simple math operations like <code>+</code>, <code>-</code>, <code>*</code> and <code>/</code>, but all expressions must be linear (of the form <code>y = mx + b</code>).  Basically, you can do most things except multiply or divide two constraint variables.  </p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* this is not linear &amp; will throw an error */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* this is not linear &amp; will throw an error */</span>
 
-<span class="nf">#box1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">/</span> <span class="nf">#box1</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#box2</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">/</span> <span class="nf">#2box</span><span class="o">[</span><span class="nt">height</span><span class="o">];</span></code></pre></div>
+<span class="nf">#box1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">/</span> <span class="nf">#box1</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#box2</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">/</span> <span class="nf">#2box</span><span class="o">[</span><span class="nt">height</span><span class="o">];</span>
+</code></pre></div>
 
 <p>I wish we could go non-linear, but we can&#39;t because math.</p>
 

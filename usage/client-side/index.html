@@ -185,16 +185,18 @@ GSS will go parallel with [Web Workers](http://www.html5rocks.com/en/tutorials/w
 
 If you download via Bower:
 
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span> <span class="nx">bower</span> <span class="nx">install</span> <span class="nx">gss</span></code></pre></div>
+<div class="highlight"><pre><code class="javascript"><span class="nx">$</span> <span class="nx">bower</span> <span class="nx">install</span> <span class="nx">gss</span>
+</code></pre></div>
 
 Use the following:
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script&gt;</span>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;script&gt;</span>
   <span class="nx">GSS_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">worker</span><span class="o">:</span> <span class="s2">&quot;../bower_components/gss/dist/worker.js&quot;</span>
   <span class="p">}</span>
 <span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;../bower_components/gss/dist/gss.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;../bower_components/gss/dist/gss.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
 
 Otherwise, [download version 1.0.4-beta](https://github.com/the-gss/engine/archive/1.0.4-beta.zip) or clone the [github repo](https://github.com/the-gss/engine).
 
@@ -204,22 +206,24 @@ Otherwise, [download version 1.0.4-beta](https://github.com/the-gss/engine/archi
 
 To load your `.gss` stylesheets, just add `type=text/gss`:
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type=</span><span class="s">&quot;text/gss&quot;</span> <span class="na">href=</span><span class="s">&quot;my-awesome-styles.gss&quot;</span><span class="nt">&gt;&lt;/link&gt;</span></code></pre></div>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type=</span><span class="s">&quot;text/gss&quot;</span> <span class="na">href=</span><span class="s">&quot;my-awesome-styles.gss&quot;</span><span class="nt">&gt;&lt;/link&gt;</span>
+</code></pre></div>
 
 Likewise, inline GSS works with a simple `type="text/gss"`:
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/gss&quot;</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/gss&quot;</span><span class="nt">&gt;</span>
 
   <span class="c">/* Your GSS */</span>
 
-<span class="nt">&lt;/style&gt;</span></code></pre></div>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div>
 
 
 ## Configuration
 
 Options can be given on the following global object before the `<script src="gss.js"></script>`:
 
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script&gt;</span>
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;script&gt;</span>
 <span class="nx">GSS_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
   
   <span class="c1">// Web Worker</span>
@@ -265,7 +269,8 @@ Options can be given on the following global object before the `<script src="gss
   
 <span class="p">};</span>
 <span class="nt">&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;gss.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;gss.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div>
 
 
 

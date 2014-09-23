@@ -192,17 +192,18 @@
 
 <p>With only inequality constraints at your disposal, constraining common layout scenarios quickly becomes tedious.  To horizontally align 4 buttons within a panel with a gap of 10px requires something like:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nf">#panel</span><span class="o">[</span><span class="nt">left</span><span class="o">]</span> <span class="o">+</span> <span class="nt">10</span> <span class="o">==</span> <span class="nf">#button1</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
+<div class="highlight"><pre><code class="css"><span class="nf">#panel</span><span class="o">[</span><span class="nt">left</span><span class="o">]</span> <span class="o">+</span> <span class="nt">10</span> <span class="o">==</span> <span class="nf">#button1</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
 <span class="nf">#button1</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nt">10</span> <span class="o">==</span> <span class="nf">#button2</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
 <span class="nf">#button2</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nt">10</span> <span class="o">==</span> <span class="nf">#button3</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
 <span class="nf">#button4</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nt">10</span> <span class="o">==</span> <span class="nf">#button4</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
-<span class="nf">#panel</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="nt">-</span> <span class="nt">10</span> <span class="o">==</span> <span class="nf">#button4</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span></code></pre></div>
+<span class="nf">#panel</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="nt">-</span> <span class="nt">10</span> <span class="o">==</span> <span class="nf">#button4</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span>
+</code></pre></div>
 
 <p>Not to mention the obligatory size &amp; vertical constraints needed to fully specify the panel and buttons - ugh...  </p>
 
 <p>This is where Grid-flavored VFL comes in.  The brains at Apple came up with VFL as a more programatic way to install constraints in Cocoa AutoLayout.  The idea is rather simple, the syntax should visually depict the layout.  GSS takes the good parts of VFL and makes it more suitable for CSS, throws in some sugar and drops the cruft.  So the above example of 4 buttons in a panel becomes:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@horizontal</span> <span class="o">|</span><span class="nt">-</span><span class="o">[</span><span class="nf">#button1</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#button2</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#button3</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#button4</span><span class="o">]</span><span class="nt">-</span><span class="o">|</span> <span class="nt">in</span><span class="o">(</span><span class="nf">#panel</span><span class="o">)</span> <span class="nt">gap</span><span class="o">(</span><span class="nt">10</span><span class="o">)</span><span class="p">;</span>
+<div class="highlight"><pre><code class="css"><span class="k">@horizontal</span> <span class="o">|</span><span class="nt">-</span><span class="o">[</span><span class="nf">#button1</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#button2</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#button3</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#button4</span><span class="o">]</span><span class="nt">-</span><span class="o">|</span> <span class="nt">in</span><span class="o">(</span><span class="nf">#panel</span><span class="o">)</span> <span class="nt">gap</span><span class="o">(</span><span class="nt">10</span><span class="o">)</span><span class="p">;</span>
 
 <span class="c">/* which is the same as */</span>
 
@@ -210,7 +211,8 @@
 
 <span class="c">/* which is the same, assuming we&#39;re using button tags, as */</span>
 
-<span class="k">@horizontal</span> <span class="nt">button</span> <span class="nt">in</span><span class="o">(</span><span class="nf">#panel</span><span class="o">)</span> <span class="nt">gap</span><span class="o">(</span><span class="nt">10</span><span class="o">)</span><span class="p">;</span></code></pre></div>
+<span class="k">@horizontal</span> <span class="nt">button</span> <span class="nt">in</span><span class="o">(</span><span class="nf">#panel</span><span class="o">)</span> <span class="nt">gap</span><span class="o">(</span><span class="nt">10</span><span class="o">)</span><span class="p">;</span>
+</code></pre></div>
 
 <h2>Basics</h2>
 
@@ -230,11 +232,12 @@
 
 <p><img class="vfl-small-img" src="../../assets/images/vfl/flushViews.png" width="99" height="20" alt="FlushViews"></p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@h</span> <span class="o">[</span><span class="nf">#maroon</span><span class="o">][</span><span class="nf">#blue</span><span class="o">]</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
-<span class="nf">#maroon</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#blue</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span></code></pre></div>
+<span class="nf">#maroon</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#blue</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
+</code></pre></div>
 
 <h2>Connection Gaps</h2>
 
@@ -242,41 +245,45 @@
 
 <p><img class="vfl-small-img" src="../../assets/images/vfl/standardSpace.png" width="215" height="23" alt="StandardSpace"></p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@horizontal</span> <span class="o">[</span><span class="nf">#button</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#textField</span><span class="o">]</span> <span class="nt">gap</span><span class="o">(</span><span class="nt">8</span><span class="o">)</span><span class="p">;</span>
 <span class="c">/* or */</span>
 <span class="k">@horizontal</span> <span class="o">[</span><span class="nf">#button</span><span class="o">]</span><span class="nt">-8-</span><span class="o">[</span><span class="nf">#textField</span><span class="o">]</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
-<span class="nf">#button</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nt">8</span> <span class="o">==</span> <span class="nf">#textField</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span></code></pre></div>
+<span class="nf">#button</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nt">8</span> <span class="o">==</span> <span class="nf">#textField</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
+</code></pre></div>
 
 <p>If no <code>gap()</code> is defined, but a hyphen is used to make a connection then a <code>standard gap</code> variable is created,</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@horizontal</span> <span class="o">[</span><span class="nf">#button</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#textField</span><span class="o">]</span><span class="p">;</span>
 <span class="k">@vertical</span> <span class="o">[</span><span class="nf">#button</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#textField</span><span class="o">]</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
 <span class="nf">#button</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="o">[</span><span class="nt">hgap</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#textField</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
-<span class="nf">#button</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">+</span> <span class="o">[</span><span class="nt">vgap</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#textField</span><span class="o">[</span><span class="nt">top</span><span class="o">];</span></code></pre></div>
+<span class="nf">#button</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">+</span> <span class="o">[</span><span class="nt">vgap</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#textField</span><span class="o">[</span><span class="nt">top</span><span class="o">];</span>
+</code></pre></div>
 
 <p>The <code>[hgap]</code> &amp; <code>[vgap]</code> variables can be used like normal variables, and again like all constraint variables are globally scoped.</p>
 
 <p>User defined variables can be used for gaps as well:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@horizontal</span> <span class="o">[</span><span class="nf">#box1</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#box2</span><span class="o">]</span> <span class="nt">gap</span><span class="o">([</span><span class="nt">col-gap</span><span class="o">])</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
-<span class="nf">#box1</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="o">[</span><span class="nt">col-gap</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#box2</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span></code></pre></div>
+<span class="nf">#box1</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="o">[</span><span class="nt">col-gap</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#box2</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
+</code></pre></div>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@horizontal</span> <span class="o">[</span><span class="nf">#b1</span><span class="o">]</span><span class="nt">-100-</span><span class="o">[</span><span class="nf">#b2</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#b3</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#b4</span><span class="o">]</span> <span class="nt">gap</span><span class="o">(</span><span class="nf">#box1</span><span class="o">[</span><span class="nt">width</span><span class="o">])</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
 <span class="nf">#b1</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nt">100</span> <span class="o">==</span> <span class="nf">#b2</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
 <span class="nf">#b2</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nf">#box1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#b3</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
-<span class="nf">#b3</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nf">#box1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#b4</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span></code></pre></div>
+<span class="nf">#b3</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nf">#box1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#b4</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
+</code></pre></div>
 
 <h2>Containment within an Element</h2>
 
@@ -284,16 +291,17 @@
 
 <p><img class="vfl-small-img" src="../../assets/images/vfl/connectionToSuperview.png" width="152" height="32" alt="ConnectionToSuperview"></p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@h</span> <span class="o">|</span><span class="nt">-50-</span><span class="o">[</span><span class="nf">#purple-box</span><span class="o">]</span><span class="nt">-50-</span><span class="o">|</span> <span class="nt">in</span><span class="o">(</span><span class="nf">#container</span><span class="o">)</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
 <span class="nf">#container</span><span class="o">[</span><span class="nt">left</span><span class="o">]</span> <span class="o">+</span> <span class="nt">50</span> <span class="o">==</span> <span class="nf">#purple-box</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
-<span class="nf">#container</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="nt">-</span> <span class="nt">50</span> <span class="o">==</span> <span class="nf">#purple-box</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span></code></pre></div>
+<span class="nf">#container</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="nt">-</span> <span class="nt">50</span> <span class="o">==</span> <span class="nf">#purple-box</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span>
+</code></pre></div>
 
 <p>The default containing element selector is <code>::this</code>.  The above example can be written:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="nf">#container</span> <span class="p">{</span>
   <span class="o">@</span><span class="n">h</span> <span class="o">|-</span><span class="m">50</span><span class="o">-</span><span class="p">[</span><span class="m">#box</span><span class="p">]</span><span class="m">-50</span><span class="o">-|</span><span class="p">;</span>
 <span class="p">}</span>
@@ -302,20 +310,22 @@
 <span class="nf">#container</span> <span class="p">{</span>
   <span class="o">::</span><span class="p">[</span><span class="k">left</span><span class="p">]</span> <span class="o">+</span> <span class="m">50</span> <span class="o">==</span> <span class="m">#purple</span><span class="o">-</span><span class="n">box</span><span class="p">[</span><span class="k">left</span><span class="p">];</span>
   <span class="o">::</span><span class="p">[</span><span class="k">right</span><span class="p">]</span> <span class="o">-</span> <span class="m">50</span> <span class="o">==</span> <span class="m">#purple</span><span class="o">-</span><span class="n">box</span><span class="p">[</span><span class="k">right</span><span class="p">];</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 <h2>Outer-Gaps</h2>
 
 <p>You can specify the gaps to a containing element using <code>outer-gap( Number | Constraint Variable | Element Property )</code>, which overrides <code>gap()</code> if specified:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="nf">#container</span> <span class="p">{</span>
   <span class="o">@</span><span class="n">h</span> <span class="o">|-</span><span class="p">[</span><span class="m">#a</span><span class="p">]</span><span class="o">-</span><span class="p">[</span><span class="m">#b</span><span class="p">]</span><span class="o">-</span><span class="p">[</span><span class="m">#c</span><span class="p">]</span><span class="o">-|</span>
     <span class="n">gap</span><span class="p">(</span><span class="m">8</span><span class="p">)</span> <span class="n">outer</span><span class="o">-</span><span class="n">gap</span><span class="p">(</span><span class="m">16</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="c">/* Equivalent VFL */</span>
-<span class="k">@horizontal</span> <span class="o">|</span><span class="nt">-16-</span><span class="o">[</span><span class="nf">#a</span><span class="o">]</span><span class="nt">-8-</span><span class="o">[</span><span class="nf">#b</span><span class="o">]</span><span class="nt">-8-</span><span class="o">[</span><span class="nf">#c</span><span class="o">]</span><span class="nt">-16-</span><span class="o">|</span> <span class="nt">in</span><span class="o">(</span><span class="nf">#container</span><span class="o">)</span><span class="p">;</span></code></pre></div>
+<span class="k">@horizontal</span> <span class="o">|</span><span class="nt">-16-</span><span class="o">[</span><span class="nf">#a</span><span class="o">]</span><span class="nt">-8-</span><span class="o">[</span><span class="nf">#b</span><span class="o">]</span><span class="nt">-8-</span><span class="o">[</span><span class="nf">#c</span><span class="o">]</span><span class="nt">-16-</span><span class="o">|</span> <span class="nt">in</span><span class="o">(</span><span class="nf">#container</span><span class="o">)</span><span class="p">;</span>
+</code></pre></div>
 
 <h2>Alignment to Points</h2>
 
@@ -323,53 +333,58 @@
 
 <p>To horizontally align two buttons, each 8px from the center of the window:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@h</span> <span class="o">[</span><span class="nf">#btn1</span><span class="o">]</span><span class="nt">-</span><span class="o">&lt;:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">center-x</span><span class="o">]&gt;</span><span class="nt">-</span><span class="o">[</span><span class="nf">#btn2</span><span class="o">]</span> <span class="nt">gap</span><span class="o">(</span><span class="nt">8</span><span class="o">)</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
 <span class="nf">#btn1</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nt">8</span> <span class="o">==</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">center-x</span><span class="o">];</span>
-<span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">center-x</span><span class="o">]</span> <span class="o">+</span> <span class="nt">8</span> <span class="o">==</span> <span class="nf">#btn2</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span></code></pre></div>
+<span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">center-x</span><span class="o">]</span> <span class="o">+</span> <span class="nt">8</span> <span class="o">==</span> <span class="nf">#btn2</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
+</code></pre></div>
 
 <p>Alignments can be positioned within points:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@h</span> <span class="o">&lt;</span><span class="nf">#wall</span><span class="o">[</span><span class="nt">center-x</span><span class="o">]&gt;</span><span class="nt">-</span><span class="o">[</span><span class="nf">#poster</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#clock</span><span class="o">]</span><span class="nt">-</span><span class="o">&lt;:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">right</span><span class="o">])&gt;</span> <span class="nt">gap</span><span class="o">(</span><span class="nt">7</span><span class="o">)</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
 <span class="nf">#wall</span><span class="o">[</span><span class="nt">center-x</span><span class="o">]</span> <span class="o">+</span> <span class="nt">7</span> <span class="o">==</span> <span class="nf">#poster</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
 <span class="nf">#poster</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nt">7</span> <span class="o">==</span> <span class="nf">#clock</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
-<span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="nt">-</span> <span class="nt">7</span> <span class="o">==</span> <span class="nf">#clock</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span></code></pre></div>
+<span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="nt">-</span> <span class="nt">7</span> <span class="o">==</span> <span class="nf">#clock</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span>
+</code></pre></div>
 
 <p>Numbers, variables and arithmetic can be used:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@v</span> <span class="o">&lt;</span><span class="nt">100</span><span class="o">&gt;[</span><span class="nf">#box</span><span class="o">]&lt;[</span><span class="nt">row2</span><span class="o">]&gt;</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
 <span class="nt">100</span> <span class="o">==</span> <span class="nf">#box</span><span class="o">[</span><span class="nt">top</span><span class="o">];</span>
-<span class="nf">#box</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">==</span> <span class="o">[</span><span class="nt">row2</span><span class="o">];</span></code></pre></div>
+<span class="nf">#box</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">==</span> <span class="o">[</span><span class="nt">row2</span><span class="o">];</span>
+</code></pre></div>
 
 <p>Consecutive points are not constrained to each-other:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@h</span> <span class="o">[</span><span class="nf">#btn1</span><span class="o">]</span><span class="nt">-</span><span class="o">&lt;</span><span class="nf">#col3</span><span class="o">[</span><span class="nt">left</span><span class="o">]&gt;</span> 
            <span class="o">&lt;</span><span class="nf">#col4</span><span class="o">[</span><span class="nt">right</span><span class="o">]&gt;</span><span class="nt">-</span><span class="o">[</span><span class="nf">#btn2</span><span class="o">]</span> 
   <span class="nt">gap</span><span class="o">(</span><span class="nt">8</span><span class="o">)</span><span class="p">;</span> 
 
 <span class="c">/* Equivalent CCSS */</span>
 <span class="nf">#btn1</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nt">8</span> <span class="o">==</span> <span class="nf">#col3</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
-<span class="nf">#col4</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nt">8</span> <span class="o">==</span> <span class="nf">#btn2</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span></code></pre></div>
+<span class="nf">#col4</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nt">8</span> <span class="o">==</span> <span class="nf">#btn2</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
+</code></pre></div>
 
 <h2>Implicit Connections</h2>
 
 <p>Align group elements matching a selector:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="k">@v</span> <span class="nc">.section</span><span class="p">;</span>
+<div class="highlight"><pre><code class="css"><span class="k">@v</span> <span class="nc">.section</span><span class="p">;</span>
 
 <span class="k">@h</span> <span class="nc">.menu-item</span> 
   <span class="nt">in</span><span class="o">(</span><span class="nf">#menu</span><span class="o">)</span>
   <span class="nt">gap</span><span class="o">(</span><span class="nt">16</span><span class="o">)</span>
-  <span class="nt">outer-gap</span><span class="o">(</span><span class="nt">32</span><span class="o">)</span><span class="p">;</span></code></pre></div>
+  <span class="nt">outer-gap</span><span class="o">(</span><span class="nt">32</span><span class="o">)</span><span class="p">;</span>
+</code></pre></div>
 
 <p><strong>WARNING:</strong> only relatively simple selectors without spaces currently work.</p>
 
@@ -377,25 +392,28 @@
 
 <p>Cushions are similar to connections, only they use inequality instead of equality constraints. </p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@horizontal</span> <span class="o">[</span><span class="nf">#box1</span><span class="o">]~[</span><span class="nf">#box2</span><span class="o">]</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
-<span class="nf">#box1</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="nf">#box2</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span></code></pre></div>
+<span class="nf">#box1</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="nf">#box2</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
+</code></pre></div>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@vertical</span> <span class="o">[</span><span class="nf">#box1</span><span class="o">]~</span><span class="nt">100</span><span class="o">~[</span><span class="nf">#box2</span><span class="o">]</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
-<span class="nf">#box1</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">+</span> <span class="nt">100</span> <span class="o">&lt;=</span> <span class="nf">#box2</span><span class="o">[</span><span class="nt">top</span><span class="o">];</span></code></pre></div>
+<span class="nf">#box1</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">+</span> <span class="nt">100</span> <span class="o">&lt;=</span> <span class="nf">#box2</span><span class="o">[</span><span class="nt">top</span><span class="o">];</span>
+</code></pre></div>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@horizontal</span> <span class="o">[</span><span class="nf">#box1</span><span class="o">]~</span><span class="nt">-</span><span class="o">~[</span><span class="nf">#box2</span><span class="o">]</span><span class="p">;</span>
 <span class="k">@vertical</span> <span class="o">[</span><span class="nf">#box3</span><span class="o">]~</span><span class="nt">-</span><span class="o">~[</span><span class="nf">#box4</span><span class="o">]</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
 <span class="nf">#box1</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="o">[</span><span class="nt">hgap</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="nf">#box2</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
-<span class="nf">#box3</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">+</span> <span class="o">[</span><span class="nt">vgap</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="nf">#box4</span><span class="o">[</span><span class="nt">top</span><span class="o">];</span></code></pre></div>
+<span class="nf">#box3</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">+</span> <span class="o">[</span><span class="nt">vgap</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="nf">#box4</span><span class="o">[</span><span class="nt">top</span><span class="o">];</span>
+</code></pre></div>
 
 <h2>Size Predicates</h2>
 
@@ -403,36 +421,39 @@
 
 <p><img class="vfl-small-img" src="../../assets/images/vfl/priority.png" width="102" height="40" alt="Priority"></p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@horizontal</span> <span class="o">[</span><span class="nf">#button</span><span class="o">(</span><span class="nt">100</span><span class="o">)]</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
-<span class="nf">#button</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nt">100</span><span class="o">;</span></code></pre></div>
+<span class="nf">#button</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nt">100</span><span class="o">;</span>
+</code></pre></div>
 
 <p><img class="vfl-small-img" src="../../assets/images/vfl/equalWidths.png" width="194" height="41" alt="EqualWidths"></p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@horizontal</span> <span class="o">[</span><span class="nf">#button1</span><span class="o">(==</span><span class="nf">#button2</span><span class="o">)]</span><span class="p">;</span>
 <span class="c">/* or */</span>
 <span class="k">@horizontal</span> <span class="o">[</span><span class="nf">#button1</span><span class="o">(==</span><span class="nf">#button2</span><span class="o">[</span><span class="nt">width</span><span class="o">])]</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
-<span class="nf">#button1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#button2</span><span class="o">[</span><span class="nt">width</span><span class="o">];</span></code></pre></div>
+<span class="nf">#button1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#button2</span><span class="o">[</span><span class="nt">width</span><span class="o">];</span>
+</code></pre></div>
 
 <p>Multiple size predicates:</p>
 
 <p><img class="vfl-small-img" src="../../assets/images/vfl/multiplePredicates.png" width="101" height="57" alt="MultiplePredicates"></p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@horizontal</span> <span class="o">[</span><span class="nf">#flexibleButton</span><span class="o">(&gt;=</span> <span class="nt">70</span><span class="o">,</span> <span class="o">&lt;=</span> <span class="nt">100</span><span class="o">))]</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
 <span class="nf">#flexibleButton</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">70</span><span class="o">;</span>
-<span class="nf">#flexibleButton</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="nt">100</span><span class="o">;</span></code></pre></div>
+<span class="nf">#flexibleButton</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="nt">100</span><span class="o">;</span>
+</code></pre></div>
 
 <p><img class="vfl-small-img" src="../../assets/images/vfl/completeLayout.png" width="315" height="27" alt="CompleteLayout"></p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@horizontal</span> <span class="o">|</span><span class="nt">-24-</span><span class="o">[</span><span class="nf">#find</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#findNext</span><span class="o">]</span><span class="nt">-</span><span class="o">[</span><span class="nf">#findField</span><span class="o">(&gt;=</span><span class="nt">30</span><span class="o">)]</span><span class="nt">-24-</span><span class="o">|</span> <span class="nt">in</span><span class="o">(</span><span class="nf">#popup</span><span class="o">)</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
@@ -440,7 +461,8 @@
 <span class="nf">#find</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="o">[</span><span class="nt">hgap</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#findNext</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
 <span class="nf">#findField</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">30</span><span class="o">;</span>
 <span class="nf">#findNext</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="o">[</span><span class="nt">hgap</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#findField</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
-<span class="nf">#findField</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nt">24</span> <span class="o">==</span> <span class="nf">#popup</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span></code></pre></div>
+<span class="nf">#findField</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">+</span> <span class="nt">24</span> <span class="o">==</span> <span class="nf">#popup</span><span class="o">[</span><span class="nt">right</span><span class="o">];</span>
+</code></pre></div>
 
 <h2>VFL Chains</h2>
 
@@ -457,7 +479,7 @@ If no <code>Expression</code> is given than the elements properties are chained 
 
 <p>For example,</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@h</span> <span class="o">[</span><span class="nf">#b1</span><span class="o">][</span><span class="nf">#b2</span><span class="o">][</span><span class="nf">#b3</span><span class="o">][</span><span class="nf">#b4</span><span class="o">]</span> <span class="nt">chain-height</span> <span class="nt">chain-width</span><span class="o">(</span><span class="nt">250</span><span class="o">)</span><span class="p">;</span>
 
 <span class="c">/* or, more explicitly */</span>
@@ -468,9 +490,10 @@ If no <code>Expression</code> is given than the elements properties are chained 
 <span class="nf">#b2</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#b3</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
 <span class="nf">#b3</span><span class="o">[</span><span class="nt">right</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#b4</span><span class="o">[</span><span class="nt">left</span><span class="o">];</span>
 <span class="nf">#b1</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#b2</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#b3</span><span class="o">[</span><span class="nt">height</span><span class="o">];</span>
-<span class="nf">#b1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nt">250</span> <span class="o">==</span> <span class="nf">#b2</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nt">250</span> <span class="o">==</span> <span class="nf">#b3</span><span class="o">[</span><span class="nt">width</span><span class="o">];</span></code></pre></div>
+<span class="nf">#b1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nt">250</span> <span class="o">==</span> <span class="nf">#b2</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nt">250</span> <span class="o">==</span> <span class="nf">#b3</span><span class="o">[</span><span class="nt">width</span><span class="o">];</span>
+</code></pre></div>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@vertical</span> <span class="o">|</span><span class="nt">-8-</span><span class="o">[</span><span class="nf">#b1</span><span class="o">][</span><span class="nf">#b2</span><span class="o">]</span><span class="nt">-8-</span><span class="o">|</span> 
   <span class="nt">in</span><span class="o">(</span><span class="nf">#panel</span><span class="o">)</span> 
   <span class="nt">chain-center-x</span><span class="o">(:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">centerX</span><span class="o">])</span> 
@@ -487,7 +510,8 @@ If no <code>Expression</code> is given than the elements properties are chained 
 <span class="nf">#b1</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#b2</span><span class="o">[</span><span class="nt">top</span><span class="o">];</span>
 <span class="nf">#b2</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">+</span> <span class="nt">8</span> <span class="o">==</span> <span class="o">:</span><span class="nd">:window</span><span class="o">[</span><span class="nt">bottom</span><span class="o">];</span>
 <span class="nf">#b1</span><span class="o">[</span><span class="nt">centerX</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#panel</span><span class="o">[</span><span class="nt">center-x</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#b2</span><span class="o">[</span><span class="nt">center-x</span><span class="o">];</span>
-<span class="nf">#b1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">50</span> <span class="o">&lt;=</span> <span class="nf">#b2</span><span class="o">[</span><span class="nt">width</span><span class="o">];</span></code></pre></div>
+<span class="nf">#b1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="nt">50</span> <span class="o">&lt;=</span> <span class="nf">#b2</span><span class="o">[</span><span class="nt">width</span><span class="o">];</span>
+</code></pre></div>
 
 <h2>VFL Strength & Weight</h2>
 
@@ -497,26 +521,28 @@ If no <code>Expression</code> is given than the elements properties are chained 
 
 <p><img class="vfl-small-img" src="../../assets/images/vfl/verticalLayout.png" width="96" height="54" alt="VerticalLayout"></p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@vertical</span> <span class="o">[</span><span class="nf">#topfield</span><span class="o">]</span><span class="nt">-10-</span><span class="o">[</span><span class="nf">#bottomfield</span><span class="o">]</span> <span class="o">!</span><span class="nt">strong100</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
-<span class="nf">#topfiled</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">+</span> <span class="nt">10</span> <span class="o">==</span> <span class="nf">#bottomfield</span><span class="o">[</span><span class="nt">top</span><span class="o">]</span> <span class="o">!</span><span class="nt">strong100</span><span class="o">;</span></code></pre></div>
+<span class="nf">#topfiled</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">+</span> <span class="nt">10</span> <span class="o">==</span> <span class="nf">#bottomfield</span><span class="o">[</span><span class="nt">top</span><span class="o">]</span> <span class="o">!</span><span class="nt">strong100</span><span class="o">;</span>
+</code></pre></div>
 
 <p>Size Predicates have their own Strength &amp; Weight:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@vertical</span> <span class="o">[</span><span class="nf">#box1</span><span class="o">(&gt;=</span> <span class="o">[</span><span class="nt">row-height</span><span class="o">]</span> <span class="o">!</span><span class="nt">require</span><span class="o">,</span> <span class="o">==</span> <span class="nt">20</span> <span class="o">!</span><span class="nt">strong</span><span class="o">)][</span><span class="nf">#box2</span><span class="o">][</span><span class="nf">#box3</span><span class="o">]</span> <span class="o">!</span><span class="nt">medium</span><span class="p">;</span>
 
 <span class="c">/* Equivalent CCSS */</span>
 <span class="nf">#box1</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">==</span> <span class="nt">20</span> <span class="o">!</span><span class="nt">strong</span><span class="o">;</span>
 <span class="nf">#box1</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">&gt;=</span> <span class="o">[</span><span class="nt">row-height</span><span class="o">]</span> <span class="o">!</span><span class="nt">require</span><span class="o">;</span>
 <span class="nf">#box1</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#box2</span><span class="o">[</span><span class="nt">top</span><span class="o">]</span> <span class="o">!</span><span class="nt">medium</span><span class="o">;</span>
-<span class="nf">#box2</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#box3</span><span class="o">[</span><span class="nt">top</span><span class="o">]</span> <span class="o">!</span><span class="nt">medium</span><span class="o">;</span></code></pre></div>
+<span class="nf">#box2</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#box3</span><span class="o">[</span><span class="nt">top</span><span class="o">]</span> <span class="o">!</span><span class="nt">medium</span><span class="o">;</span>
+</code></pre></div>
 
 <p>Chains have their own Strength &amp; Weight:</p>
 
-<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* VFL */</span>
+<div class="highlight"><pre><code class="css"><span class="c">/* VFL */</span>
 <span class="k">@vertical</span> <span class="o">[</span><span class="nf">#b1</span><span class="o">][</span><span class="nf">#b2</span><span class="o">][</span><span class="nf">#b3</span><span class="o">][</span><span class="nf">#b4</span><span class="o">]</span> 
   <span class="nt">chain-width</span><span class="o">(==!</span><span class="nt">weak10</span><span class="o">)</span> 
   <span class="nt">chain-height</span><span class="o">(&lt;=</span><span class="nt">150</span><span class="o">&gt;=!</span><span class="nt">required</span><span class="o">)</span> 
@@ -527,7 +553,8 @@ If no <code>Expression</code> is given than the elements properties are chained 
 <span class="nf">#b2</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#b3</span><span class="o">[</span><span class="nt">top</span><span class="o">]</span> <span class="o">!</span><span class="nt">medium</span><span class="o">;</span>
 <span class="nf">#b3</span><span class="o">[</span><span class="nt">bottom</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#b4</span><span class="o">[</span><span class="nt">top</span><span class="o">]</span> <span class="o">!</span><span class="nt">medium</span><span class="o">;</span>
 <span class="nf">#b1</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#b2</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#b3</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">==</span> <span class="nf">#b4</span><span class="o">[</span><span class="nt">width</span><span class="o">]</span> <span class="o">!</span><span class="nt">weak10</span><span class="o">;</span>
-<span class="nf">#b1</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="nt">150</span> <span class="o">&gt;=</span> <span class="nf">#b2</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="nt">150</span> <span class="o">&gt;=</span> <span class="nf">#b3</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="nt">150</span> <span class="o">&gt;=</span> <span class="nf">#b4</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">!</span><span class="nt">required</span><span class="o">;</span></code></pre></div>
+<span class="nf">#b1</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="nt">150</span> <span class="o">&gt;=</span> <span class="nf">#b2</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="nt">150</span> <span class="o">&gt;=</span> <span class="nf">#b3</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="nt">150</span> <span class="o">&gt;=</span> <span class="nf">#b4</span><span class="o">[</span><span class="nt">height</span><span class="o">]</span> <span class="o">!</span><span class="nt">required</span><span class="o">;</span>
+</code></pre></div>
 
         
       </div>
