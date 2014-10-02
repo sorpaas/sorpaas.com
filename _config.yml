@@ -7,5 +7,6 @@ exclude:
   - "README.md"
   - "Gruntfile.coffee"
   - "Rakefile"
+  - "Gemfile"
   - "node_modules"
   - "*.psd"
