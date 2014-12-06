@@ -58,7 +58,7 @@
       {% assign posts = site.posts | sort: 'date' | where: 'navigation', true %}
 
       <button class="toggle">Menu</button>
-      <nav>
+      <nav style="display: none;">
         <ul>
           <li><a href="{{ '/' | prepend: site.baseurl }}" title="Home">Home</a></li>
           {% for page in site.pages %}
