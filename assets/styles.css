@@ -168,6 +168,10 @@ h5 {
     text-indent: -9999px; }
 
 /* Gradients */
+.gradient-0 {
+    background-color: #0e2f3a;
+}
+
 .gradient-1 {
     background-color: #a18cab;
     background-image: -o-linear-gradient(-40deg, #0e153a 10%, #4a4c7b 35%, #a18cab 65%, #f3c9d7 90%);
