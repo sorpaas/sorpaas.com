@@ -1,15 +1,13 @@
     {% if site.copyright or site.email %}
 
-      <footer data-animation="fadeInUp">
+      <footer>
         <div class="copyright">
-          {% if site.copyright %}<b>{{ site.copyright }}</b> All Rights Reserved.{% endif %}
-        	{% if site.email %}<a href="mailto:{{ site.email }}" title="Send E-Mail">Contact</a>{% endif %}
-        	<a href="{{ '/feed.xml' | prepend: site.baseurl }}" title="Subscribe to Feed">RSS</a>
+          {% if site.copyright %}<b>{{ site.copyright }}</b> All Rights Reserved.{% endif %}{% if site.email %}<a href="mailto:{{ site.email }}" title="Send E-Mail">Contact</a>{% endif %}
         </div>
       </footer>
-      
+
     {% endif %}
-    
+
     <script src="{{ '/assets/jquery-2.1.1.min.js' | prepend: site.baseurl }}"></script>
     <script src="{{ '/assets/viewportchecker.js' | prepend: site.baseurl }}"></script>
     <script src="{{ '/assets/scripts.js' | prepend: site.baseurl }}"></script>
