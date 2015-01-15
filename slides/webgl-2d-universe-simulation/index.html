@@ -863,7 +863,15 @@ layout: false
 The encoding and decoding functions by [skeeto](https://github.com/skeeto), from 8 bit vec2 to float *(r: result, v: value, s: scale)*:
 
 \begin{equation}
-\int r = (\lfloor (v * s + 255 * 255 / 2) mod 255 / 255 * 255 \rfloor);
+r1 = \lfloor \frac{(v\*s+255^2/2)\mod 255}{255}\*255 \rfloor
+\end{equation}
+
+\begin{equation}
+r2 = \lfloor \frac{\lfloor \frac{v\*s+255^2/2}{255} \rfloor}{255}\*255 \rfloor
+\end{equation}
+
+\begin{equation}
+v = \frac{(\frac{r1}{255}\*b+\frac{r2}{255}\*b^2) - b^2/2}{s}
 \end{equation}
 
 ]
@@ -918,266 +926,198 @@ In a 2D world, it would be \begin{equation} (2\pi r\hat{r})\cdot(g\hat{r}) = -4\
 
 ]
 ---
-name: how
+layout: false
 
 .left-column[
-  ## How does it work?
-### - Markdown
+  ## WebGL 2D Universe Simulation
+  ## Calculate Gravity
 ]
+
 .right-column[
-A Markdown-formatted chunk of text is transformed into individual slides by JavaScript running in the browser:
 
-```remark
-# Slide 1
-This is slide 1
+Create textures:
 
----
-
-# Slide 2
-This is slide 2
+```javascript
+this.textures['g0'] = igloo.texture().blank(w, h);
+this.textures['g1'] = igloo.texture().blank(w, h);
 ```
 
-.slides[
-  .first[
-  ### Slide 1
-  This is slide 1
-  ]
-  .second[
-  ### Slide 2
-  This is slide 2
-  ]
-]
+Create a framebuffer:
 
-Regular Markdown rules apply with only a single exception:
+```javascript
+this.framebuffers['gravity'] = igloo.framebuffer();
+```
 
-  - A line containing three dashes constitutes a new slide
-  (not a horizontal rule, `&lt;hr /&gt;`)
-
-Have a look at the [Markdown website](http://daringfireball.net/projects/markdown/) if you're not familiar with Markdown formatting.
 ]
 ---
+layout: false
+
 .left-column[
-  ## How does it work?
-  ### - Markdown
-  ### - Inside HTML
+  ## WebGL 2D Universe Simulation
+  ## Calculate Gravity
 ]
+
 .right-column[
-A simple HTML document is needed for hosting the styles, Markdown and the generated slides themselves:
 
-```xml
-<!DOCTYPE html>
-<html>
-  <head>
-    <style type="text/css">
-      /* Slideshow styles */
-    </style>
-  </head>
-  <body>
-*    <textarea id="source">
-      <!-- Slideshow Markdown -->
-    &lt;/textarea&gt;
-*    <script type="text/javascript" src="remark.js">
-    </script>
-    <script type="text/javascript">
-*      var slideshow = remark.create();
-    </script>
-  </body>
-</html>
+In ```glsl/gravity.vert```, fill the full screen size:
+
+```javascript
+attribute vec2 quad;
+
+void main() {
+    gl_Position = vec4(quad, 0, 1);
+}
 ```
+]
+---
+layout: false
 
-You may download remark to have your slideshow not depend on any online resources, or reference the [latest version](http://remarkjs.com/downloads/remark-latest.min.js) online directly.
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Calculate Gravity
+]
+
+.right-column[
+
+In ```glsl/gravity.frag```, encoding and decoding:
+
+```javascript
+float decode(vec2 channels, float scale) {
+  return (dot(channels, vec2(BASE, BASE * BASE))
+      - OFFSET) / scale;
+}
+
+vec2 encode(float value, float scale) {
+  value = value * scale + OFFSET;
+  float x = mod(value, BASE);
+  float y = floor(value / BASE);
+  return vec2(x, y) / BASE;
+}
+```
+]
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Calculate Gravity
+]
+
+.right-column[
+
+And render to update:
+
+```javascript
+void main() {
+  vec2 pg = vec2(0.0, 0.0);
+  if (index != 0) {
+    vec4 gsample = texture2D(previousGravity,
+                             gl_FragCoord.xy / worldsize);
+    pg = vec2(decode(gsample.rg, scale),
+              decode(gsample.ba, scale));
+  }
+  vec2 gravity = pg + 3.0 * normalize(gl_FragCoord.xy
+      - position) / pow(distance(gl_FragCoord.xy,
+      position), 1.0);
+  gl_FragColor = vec4(encode(gravity.x, scale),
+                      encode(gravity.y, scale));
+}
+```
+]
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Calculate Velocity and position
+]
+
+.right-column[
+
+```javascript
+void updateVelocity(inout vec2 p, inout vec2 v,
+                    vec2 obstacle, vec2 gravity) {
+    v -= gravity;
+    if (length(obstacle) > 0.5) {
+        if (length(v) < 0.5) {
+            v = obstacle * 0.5;
+        } else {
+            v = reflect(v, obstacle) * restitution;
+        }
+    }
+}
+
+void updatePosition(inout vec2 p, inout vec2 v,
+                    vec2 obstacle) {
+    p += v + wind;
+    if (length(obstacle) > 0.5) {
+        p -= v;
+        p += obstacle;
+    }
+}
+```
+]
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Lessons Learned
+]
+
+.right-column[
+- GPU computation is fast.
+
+- Use the simplest way to represent data -- directly store it in the screen.
 ]
 ---
 template: inverse
 
-## Of course, Markdown can only go so far.
+## Multi-star System: the Narrow Area [Demo](http://universe.ns.mg/particles)
 ---
+layout: false
+
 .left-column[
-  ## Markdown extensions
+  ## WebGL 2D Universe Simulation
+  ## Scaling
 ]
+
 .right-column[
-To help out with slide layout and formatting, a few Markdown extensions have been included:
+- **Add more properties to particles:** Just create more shaders.
 
-- Slide properties, for naming, styling and templating slides
+- **Bigger world size:** Bigger textures and framebuffers, or more textures and framebuffers. Treating gravity and light as waves would be more efficient.
 
-- Content classes, for styling specific content
+- **Data persistence:** Store textures and framebuffers to disk.
 
-- Syntax highlighting, supporting a range of languages
-]
-
----
-.left-column[
-  ## Markdown extensions
-  ### - Slide properties
-]
-.right-column[
-Initial lines containing key-value pairs are extracted as slide properties:
-
-```remark
-name: agenda
-class: middle, center
-
-# Agenda
-
-The name of this slide is {{ name }}.
-```
-
-Slide properties serve multiple purposes:
-
-* Naming and styling slides using properties `name` and `class`
-
-* Using slides as templates using properties `template` and `layout`
-
-* Expansion of `{{ property }}` expressions to property values
-
-See the [complete list](https://github.com/gnab/remark/wiki/Markdown#slide-properties) of slide properties.
-]
----
-.left-column[
-  ## Markdown extensions
-  ### - Slide properties
-  ### - Content classes
-]
-.right-column[
-Any occurences of one or more dotted CSS class names followed by square brackets are replaced with the contents of the brackets with the specified classes applied:
-
-```remark
-.footnote[.red.bold[*] Important footnote]
-```
-
-Resulting HTML extract:
-
-```xml
-<span class="footnote">
-  <span class="red bold">*</span> Important footnote
-</span>
-```
-]
----
-.left-column[
-  ## Markdown extensions
-  ### - Slide properties
-  ### - Content classes
-  ### - Syntax Highlighting
-]
-.right-column[
-Code blocks can be syntax highlighted by specifying a language from the set of [supported languages](https://github.com/gnab/remark/wiki/Configuration#highlighting).
-
-Using [GFM](http://github.github.com/github-flavored-markdown/) fenced code blocks you can easily specify highlighting language:
-
-.pull-left[
-
-<pre><code>```javascript
-function add(a, b)
-  return a + b
-end
-```</code></pre>
-]
-.pull-right[
-
-<pre><code>```ruby
-def add(a, b)
-  a + b
-end
-```</code></pre>
-]
-
-A number of highlighting [styles](https://github.com/gnab/remark/wiki/Configuration#highlighting) are available, including several well-known themes from different editors and IDEs.
-
-]
----
-.left-column[
-  ## Presenter mode
-]
-.right-column[
-To help out with giving presentations, a presenter mode comprising the
-following features is provided:
-
-- Display of slide notes for the current slide, to help you remember
-  key points
-
-- Display of upcoming slide, to let you know what's coming
-
-- Cloning of slideshow for viewing on extended display
-]
----
-.left-column[
-  ## Presenter mode
-  ### - Inline notes
-]
-.right-column[
-Just like three dashes separate slides,
-three question marks separate slide content from slide notes:
-
-```
-Slide 1 content
-
-*???
-
-Slide 1 notes
-
----
-
-Slide 2 content
-
-*???
-
-Slide 2 notes
-```
-
-Slide notes are also treated as Markdown, and will be converted in the
-same manner slide content is.
-
-Pressing __P__ will toggle presenter mode.
-]
-???
-Congratulations, you just toggled presenter mode!
-
-Now press __P__ to toggle it back off.
----
-.left-column[
-  ## Presenter mode
-  ### - Inline notes
-  ### - Cloned view
-]
-.right-column[
-Presenter mode of course makes no sense to the audience.
-
-Creating a cloned view of your slideshow lets you:
-
-- Move the cloned view to the extended display visible to the audience
-
-- Put the original slideshow in presenter mode
-
-- Navigate as usual, and the cloned view will automatically keep up with the original
-
-Pressing __C__ will open a cloned view of the current slideshow in a new
-browser window.
+- **Moving from browsers to servers:** Because all logic is written in shaders, it's easy to migrate to OpenGL. Shaders run everywhere!
 ]
 ---
 template: inverse
 
-## It's time to get started!
+## Before the End: A Proposal
 ---
+layout: false
+
 .left-column[
-  ## Getting started
+  ## lookup(food)
 ]
+
 .right-column[
-Getting up and running is done in only a few steps:
+- Food is expensive in Hong Kong.
 
-1. Visit the [project site](http://github.com/gnab/remark)
+- However, there are events that provide food for free!
 
-2. Follow the steps in the Getting Started section
+- Events are interesting!
 
-For more information on using remark, please check out the [wiki](https://github.com/gnab/remark/wiki) pages.
+- There is [foodbot](http://food-bot.com) in US!
+
+It is urgent to create some methods for people to easily get free food three meals a day. It saves $100 everyday, that is $3,650,000 for 100 years, enough to buy a house in Hong Kong!
 ]
 ---
-name: last-page
 template: inverse
 
-## That's all folks (for now)!
-
-Slideshow created using [remark](http://github.com/gnab/remark).
+## Q & A
+[@sorpaas](http://sorpaas.com)
     </textarea>
     <script src="downloads/remark-latest.min.js" type="text/javascript"></script>
     <script type="text/javascript">
