@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="webgl" />
+    <meta name="description" content="WebGL Presentation of sorpa'as plat" />
+    <title>WebGL and A 2D Universe Simulation</title>
+    <style type="text/css">
+      @import url(//fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(//fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+     body {
+         font-family: 'Droid Serif';
+     }
+     h1, h2, h3 {
+         font-family: 'Yanone Kaffeesatz';
+         font-weight: 400;
+         margin-bottom: 0;
+
+     }
+     iframe {
+         border: 0px;
+     }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        -moz-border-radius: 5px;
+        -web-border-radius: 5px;
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 1.2em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+#WebGL: A 2D Universe Simulation
+@sorpaas
+---
+layout: false
+.left-column[
+  ## About
+]
+.right-column[
+  Before the talk, bear a Lojbanist saying something about Lojban ...
+
+- coi mi'e la sorpa'as <br>
+(My name is sorpa'as/Brendan)
+
+- .i e'o do cilre la lojban <br>
+(Learn Lojban!)
+
+.footnote[.red[*] "sorpa'as" pronounces as /sorpahas/, not /sorpas/.]
+]
+---
+template: inverse
+## WebGL, 3D for Web?
+---
+layout: false
+.left-column[
+  ## Intro
+  ## WebGL is ..
+]
+.right-column[
+
+* A Javascript API
+* Run (almost) everywhere
+
+<img src="pictures/3d-examples.jpg">
+
+.footnote[.red[*] Copyright © 2006–2014 Opera Software ASA. Some rights reserved.]
+
+]
+---
+template: inverse
+
+## I'm excited, show me some example!
+---
+layout: false
+.left-column[
+  ## Intro
+  ## A Three.js Example
+]
+.right-column[
+A basic example from the "Get Started" guide on Three.js website:
+
+```html
+<html>
+    <head>
+        <title>My first Three.js app</title>
+        <style>
+         body { margin: 0; }
+         canvas { width: 100%; height: 100% }
+        </style>
+    </head>
+    <body>
+        <script src="js/three.min.js"></script>
+        <script> // Our Javascript will go here. </script>
+    </body>
+</html>
+
+```
+]
+---
+.left-column[
+  ## Intro
+  ## A Three.js Example
+]
+.right-column[
+A basic example from the "Get Started" guide on Three.js website:
+
+```javascript
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera( 75,
+    window.innerWidth / window.innerHeight, 0.1, 1000 );
+var renderer = new THREE.WebGLRenderer();
+
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
+```
+]
+---
+.left-column[
+  ## Intro
+  ## A Three.js Example
+]
+.right-column[
+A basic example from the "Get Started" guide on Three.js website:
+
+```javascript
+var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+var material = new THREE.MeshBasicMaterial( {
+    color: 0x00ff00
+} );
+var cube = new THREE.Mesh( geometry, material );
+
+scene.add( cube );
+camera.position.z = 5;
+```
+]
+---
+.left-column[
+  ## Intro
+  ## A Three.js Example
+]
+.right-column[
+A basic example from the "Get Started" guide on Three.js website:
+
+```javascript
+function render() {
+    requestAnimationFrame( render );
+    renderer.render( scene, camera );
+}
+
+render();
+```
+]
+---
+.left-column[
+  ## Intro
+  ## A Three.js Example
+]
+.right-column[
+A basic example from the "Get Started" guide on Three.js website:
+
+```javascript
+function render() {
+    requestAnimationFrame( render );
+
+    cube.rotation.x += 0.1;
+    cube.rotation.y += 0.1;
+
+    renderer.render( scene, camera );
+}
+
+render();
+```
+]
+---
+.left-column[
+  ## Intro
+  ## A Three.js Example
+]
+.right-column[
+A basic example from the "Get Started" guide on Three.js website:
+
+<center><a href="example1.html">Results of the example</a></center>
+]
+---
+template: inverse
+
+## Use frameworks such as Unity or Three.js if you want to create a 3D scene in WebGL.
+---
+template: inverse
+
+## But that's not today's (main) topic.
+---
+layout: false
+
+.left-column[
+  ## Intro
+  ## Drawing in WebGL
+]
+
+.right-column[
+Wikipedia on WebGL:
+
+> WebGL (Web Graphics Library) is a JavaScript API for rendering interactive 3D graphics and **2D graphics** within any compatible web browser without the use of plug-ins ...
+>
+]
+---
+template: inverse
+
+## Wait, isn't there HTML Canvas?
+---
+layout: false
+
+.left-column[
+  ## Intro
+  ## Drawing in WebGL
+  ## Why?
+]
+
+.right-column[
+Performance:
+
+<img src="pictures/comp-test-result.png">
+
+.footnote[.red[*] © 2012 Tizen Project, a Linux Foundation Project. Creative Commons Attribution 3.0.]
+]
+---
+template: inverse
+
+## Programmable shaders and General-purpose computation in GPU (GPGPU)
+---
+template: inverse
+
+## A 2D Universe Simulation [Demo](http://universe.ns.mg)
+
+```javascript
+appendParticle(500, 1, 1);
+```
+---
+layout: false
+
+.left-column[
+  ## Canvas 2D Universe Simulation
+]
+
+.right-column[
+Once upon a time:
+
+```javascript
+for (var particle in particles) {
+    particle.draw(c);
+}
+```
+]
+---
+layout: false
+
+.left-column[
+  ## Canvas 2D Universe Simulation
+]
+
+.right-column[
+Current code:
+
+```javascript
+bufferCtx.beginPath();
+for (i = 0; i < len; i++) {
+    p = particles[i];
+    if (p.destroyed) continue;
+    p.update(particles);
+    bufferCtx.moveTo(offset.x + p.x,
+                     offset.y + p.y);
+    bufferCtx.lineTo(offset.x + p._latest.x,
+                     offset.y + p._latest.y);
+}
+bufferCtx.stroke();
+bufferCtx.beginPath();
+for (i = 0; i < len; i++) {
+    p = particles[i];
+    if (p.destroyed) continue;
+    bufferCtx.moveTo(offset.x + p.x,
+                     offset.y + p.y);
+    bufferCtx.arc(offset.x + p.x,
+                  offset.y + p.y,
+                  p.radius, 0,
+                  Math.PI * 2, false);
+}
+bufferCtx.fill();
+```
+]
+---
+template: inverse
+
+## OK, then where's the WebGL you promised?
+---
+template: inverse
+
+## A 2D Universe Simulation in WebGL [Demo](http://universe.ns.mg/particles)
+---
+template: inverse
+
+## 32678 (1024 * 32) particles.
+---
+template: inverse
+
+## Some Details
+---
+template: inverse
+
+## Igloo: Low Level API Wrapper for WebGL <br> https://github.com/skeeto/igloojs
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Igloo
+]
+
+.right-column[
+
+Initialize WebGL using Igloo:
+
+```javascript
+var igloo = this.igloo = new Igloo(canvas),
+    gl = igloo.gl;
+gl.disable(gl.DEPTH_TEST); // Because we are drawing 2D.
+```
+
+Or using WebGL API directly:
+
+```javascript
+var gl = initWebGL(canvas);
+gl.disable(gl.DEPTH_TEST);
+```
+]
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Igloo
+]
+
+.right-column[
+
+Prepare necessary materials:
+
+```javascript
+this.programs = { ... };
+  // Vertex shaders and fragment shaders
+this.buffers = { ... };
+  // Some useful WebGL buffers (GL_ARRAY_BUFFER)
+this.textures = { ... };
+  // Some textures
+this.framebuffers = { ... };
+  // Some framebuffers
+```
+]
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Igloo
+]
+
+.right-column[
+
+Create a draw function:
+
+```javascript
+function draw() {
+    var igloo = this.igloo, gl = igloo.gl;
+    ...
+    this.programs.draw.use()
+        .attrib('index', this.buffers.indexes, 2)
+        .uniformi('positions', 0)
+        .uniformi('velocities', 1)
+        .uniform('statesize', this.statesize)
+        .uniform('worldsize', this.worldsize)
+        .uniform('size', this.size)
+        .uniform('scale', this.scale)
+        .uniform('color', this.color)
+        .draw(gl.POINTS, this.statesize[0] *
+                         this.statesize[1]);
+    return this;
+}
+```
+]
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Igloo
+]
+
+.right-column[
+
+Draw it, finally:
+
+```javascript
+window.requestAnimationFrame(function() {
+    ...
+    this.draw();
+    ...
+    return this;
+});
+```
+]
+---
+template: inverse
+
+## Where's the code for drawing particles, and calculating gravities, then?
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## How Does WebGL Draw?
+  ## The Rendering Pipeline
+]
+
+.right-column[
+
+- Javascript
+
+```javascript
+this.draw();
+```
+
+- Uniform state and vertex buffers
+
+```javascript
+this.textures = { ... };
+...
+this.textures.gravity.bind(0);
+program.use()
+   .attrib('index', this.buffers.indexes, 2)
+   .uniformi('gravity', 0)
+   .uniform('worldsize', this.worldsize)
+   .draw(gl.TRIANGLE_STRIP, Igloo.QUAD2.length / 2);
+```
+
+- **Vertex shader** (Written in GLSL)
+
+```
+glsl/draw.vert
+```
+
+- *Rasterization*
+
+]
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## How Does WebGL Draw?
+  ## The Rendering Pipeline
+]
+
+.right-column[
+
+- **Fragment shader** (Written in GLSL)
+
+```
+glsl/draw.frag
+```
+
+- Testing and blending
+
+- Framebuffer
+
+```javascript
+igloo.defaultFramebuffer.bind(); //Draw on screen
+```
+
+or
+
+```javascript
+this.framebuffers.gravity.bind(); //Draw to a framebuffer
+```
+
+]
+---
+template: inverse
+
+## More about vertex shaders and fragment shaders
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Vertex and Fragment Shaders
+]
+
+.right-column[
+
+## What are they?
+
+<img src="pictures/webglshaders-original.jpg">
+
+]
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Vertex and Fragment Shaders
+]
+
+.right-column[
+
+## Arrange vertices
+
+```
+Igloo.QUAD2 = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
+```
+
+* **GL_POINTS**
+* GL_LINE_STRIP
+* GL_LINE_LOOP
+* GL_LINES
+* GL_LINE_STRIP_ADJACENCY
+* GL_LINES_ADJACENCY
+* **GL_TRIANGLE_STRIP**
+* GL_TRIANGLE_FAN
+* GL_TRIANGLES
+* GL_TRIANGLE_STRIP_ADJACENCY
+* GL_TRIANGLES_ADJACENCY
+
+]
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Vertex and Fragment Shaders
+]
+
+.right-column[
+
+## Coordinate System
+
+```
+Igloo.QUAD2 = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
+```
+
+<img src="pictures/coordsys.png">
+
+]
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Vertex and Fragment Shaders
+]
+
+.right-column[
+
+## Draw on the full screen
+
+```javascript
+this.programs.gravity.use()
+    .attrib('quad', igloo.array(Igloo.QUAD2), 2)
+    .draw(gl.TRIANGLE_STRIP, Igloo.QUAD2.length / 2);
+```
+
+]
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## A Vertex Shader
+]
+
+.right-column[
+
+In ```glsl/draw.vert```
+```c
+attribute vec2 index;
+uniform sampler2D positions;
+uniform sampler2D velocities;
+...
+uniform vec2 scale;
+varying vec2 velocity;
+
+void main() {
+    ...
+    gl_Position = vec4(p / worldsize * 2.0 - 1.0, 0, 1);
+    gl_PointSize = size;
+}
+
+```
+
+]
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## A Fragment Shader
+]
+
+.right-column[
+
+In ```glsl/draw.frag```
+```c
+uniform vec4 color;
+varying vec2 velocity;
+
+const float DELTA = 0.2;
+
+void main() {
+    vec2 p = 2.0 * (gl_PointCoord - 0.5);
+    float a = smoothstep(1.0 - DELTA, 1.0, length(p));
+    float e = 0.0 + length(velocity) / 3.0;
+    gl_FragColor = pow(mix(color, vec4(0, 0, 0, 0), a),
+                       vec4(e));
+}
+
+
+```
+
+]
+---
+template: inverse
+
+## Textures
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Textures
+]
+
+.right-column[
+
+[OpenGL Tutorials: Introduction of Textures](https://www.opengl.org/sdk/docs/tutorials/ClockworkCoders/texturing.php):
+
+> Textures are basically a chuck of memory, often using R,G,B(,A) values with 8 bits per channel. Usually textures contain image data, but it is data, you can do with it whatever you want. In GLSL a texture is specified as a uniform variable.
+
+]
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Samplers
+]
+
+.right-column[
+
+Sampler is the only way to access textures in shaders:
+
+```javascript
+this.textures.p0.bind(0);
+this.programs.draw.use()
+    .uniformi('positions', 0)
+    .draw(...)
+
+```
+
+```c
+attrib vec2 index;
+uniform sampler2D positions;
+
+void main() {
+    vec4 psample = texture2D(positions, index / statesize);
+    ...
+}
+
+
+```
+
+]
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Recap
+]
+
+.right-column[
+
+The relationships between vertex buffers, vertex and fragment shaders, textures, framebuffers:
+
+* Vertex buffers are passed as attributes to vertex shaders for vertices to be drawn.
+* Textures can be passed to shaders, and the data within a texture can be fetched by a sampler.
+* Fragment shaders set the color to be drawn on the screen, one by one.
+* Those things are drawn to framebuffers.
+* Framebuffers can be the screen, or it can also be a texture.
+```
+igloo.framebuffer().attach(this.textures.obstacles)
+```
+
+]
+---
+template: inverse
+
+## How do we get the positions and velocities of particles in a 2D universe?
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## A GPGPU Strategy
+]
+
+.right-column[
+
+```javascript
+this.textures.p0
+  // A texture that contains all position data
+this.textures.p1
+  // Another texture that contains all position data
+```
+
+A ```update``` program (vertex shader and fragment shader) that has ```p0``` as an input, and output to ```p1```, which is attached as a framebuffer. The ```update``` program update positions as desired.
+
+```javascript
+function update() {
+    this.framebuffers.step.attach(this.textures.p1);
+    this.framebuffers.step.bind();
+    this.textures.p0.bind(0);
+    this.programs.update.use()
+        .attrib('quad', this.buffers.quad, 2)
+        .uniformi('position', 0)
+        .draw(gl.TRIANGLE_STRIP, Igloo.QUAD2.length / 2);
+}
+```
+
+Swap ```p0``` and ```p1``` afterwards:
+
+```
+this.swapTextures('p0', 'p1');
+```
+
+]
+---
+template: inverse
+
+## .red[Problem:] The data structure of p0 and p1 (texture) is vec4(RGBA), but we need a vec2 of floats.
+---
+template: inverse
+
+## .red[Solution:] Encode and decode it!
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Encoding and Decoding
+]
+
+.right-column[
+
+The encoding and decoding functions by [skeeto](https://github.com/skeeto), from 8 bit vec2 to float *(r: result, v: value, s: scale)*:
+
+\begin{equation}
+\int r = (\lfloor (v * s + 255 * 255 / 2) mod 255 / 255 * 255 \rfloor);
+\end{equation}
+
+]
+---
+template: inverse
+
+## How do we calculate gravity in a 2D universe?
+---
+template: inverse
+
+## Is there gravity in a 2D universe?
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Physics
+]
+
+.right-column[
+Something about **Gravity** (in the theory of "general relativity"):
+
+> The proper way to do this is using general relativity, and if you apply GR to 2+1D spacetime, you get something that looks basically nothing like gravity as we know it. In particular, space is only distorted or "curved" where there is actually mass, unlike our universe where the distortion extends beyond the region that actually contains the mass. Because that distortion is what we recognize as gravity, in a 2+1D world there would be no gravitational attraction. The presence of mass would cause some geometrical oddities, but there would be no force acting between separated masses.
+
+-- [StackExchange Physics: What is the 2D Gravity Potential?](http://physics.stackexchange.com/questions/30652/what-is-the-2d-gravity-potential)
+
+]
+---
+template: inverse
+
+## Wow, that's a little bit boring ...
+---
+layout: false
+
+.left-column[
+  ## WebGL 2D Universe Simulation
+  ## Physics
+]
+
+.right-column[
+Generalized Newtonian Gravity:
+
+\begin{equation}
+\int \vec{g}\cdot\mathrm{d}\vec{A} = -4\pi GM
+\end{equation}
+
+In a 3D world, it would be \begin{equation} (4\pi r^2\hat{r})\cdot(g\hat{r}) = -4\pi GM \end{equation} or \begin{equation} \vec{F}_g = m\vec{g} = -\frac{GMm}{r^2}\hat{r} \end{equation}
+
+In a 2D world, it would be \begin{equation} (2\pi r\hat{r})\cdot(g\hat{r}) = -4\pi GM \end{equation} or \begin{equation} \vec{F}_{g\text{(2D)}} = m\vec{g} = -\frac{2GMm}{r}\hat{r} \end{equation}
+
+-- [StackExchange Physics: What is the 2D Gravity Potential?](http://physics.stackexchange.com/questions/30652/what-is-the-2d-gravity-potential)
+
+]
+---
+name: how
+
+.left-column[
+  ## How does it work?
+### - Markdown
+]
+.right-column[
+A Markdown-formatted chunk of text is transformed into individual slides by JavaScript running in the browser:
+
+```remark
+# Slide 1
+This is slide 1
+
+---
+
+# Slide 2
+This is slide 2
+```
+
+.slides[
+  .first[
+  ### Slide 1
+  This is slide 1
+  ]
+  .second[
+  ### Slide 2
+  This is slide 2
+  ]
+]
+
+Regular Markdown rules apply with only a single exception:
+
+  - A line containing three dashes constitutes a new slide
+  (not a horizontal rule, `&lt;hr /&gt;`)
+
+Have a look at the [Markdown website](http://daringfireball.net/projects/markdown/) if you're not familiar with Markdown formatting.
+]
+---
+.left-column[
+  ## How does it work?
+  ### - Markdown
+  ### - Inside HTML
+]
+.right-column[
+A simple HTML document is needed for hosting the styles, Markdown and the generated slides themselves:
+
+```xml
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      /* Slideshow styles */
+    </style>
+  </head>
+  <body>
+*    <textarea id="source">
+      <!-- Slideshow Markdown -->
+    &lt;/textarea&gt;
+*    <script type="text/javascript" src="remark.js">
+    </script>
+    <script type="text/javascript">
+*      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
+```
+
+You may download remark to have your slideshow not depend on any online resources, or reference the [latest version](http://remarkjs.com/downloads/remark-latest.min.js) online directly.
+]
+---
+template: inverse
+
+## Of course, Markdown can only go so far.
+---
+.left-column[
+  ## Markdown extensions
+]
+.right-column[
+To help out with slide layout and formatting, a few Markdown extensions have been included:
+
+- Slide properties, for naming, styling and templating slides
+
+- Content classes, for styling specific content
+
+- Syntax highlighting, supporting a range of languages
+]
+
+---
+.left-column[
+  ## Markdown extensions
+  ### - Slide properties
+]
+.right-column[
+Initial lines containing key-value pairs are extracted as slide properties:
+
+```remark
+name: agenda
+class: middle, center
+
+# Agenda
+
+The name of this slide is {{ name }}.
+```
+
+Slide properties serve multiple purposes:
+
+* Naming and styling slides using properties `name` and `class`
+
+* Using slides as templates using properties `template` and `layout`
+
+* Expansion of `{{ property }}` expressions to property values
+
+See the [complete list](https://github.com/gnab/remark/wiki/Markdown#slide-properties) of slide properties.
+]
+---
+.left-column[
+  ## Markdown extensions
+  ### - Slide properties
+  ### - Content classes
+]
+.right-column[
+Any occurences of one or more dotted CSS class names followed by square brackets are replaced with the contents of the brackets with the specified classes applied:
+
+```remark
+.footnote[.red.bold[*] Important footnote]
+```
+
+Resulting HTML extract:
+
+```xml
+<span class="footnote">
+  <span class="red bold">*</span> Important footnote
+</span>
+```
+]
+---
+.left-column[
+  ## Markdown extensions
+  ### - Slide properties
+  ### - Content classes
+  ### - Syntax Highlighting
+]
+.right-column[
+Code blocks can be syntax highlighted by specifying a language from the set of [supported languages](https://github.com/gnab/remark/wiki/Configuration#highlighting).
+
+Using [GFM](http://github.github.com/github-flavored-markdown/) fenced code blocks you can easily specify highlighting language:
+
+.pull-left[
+
+<pre><code>```javascript
+function add(a, b)
+  return a + b
+end
+```</code></pre>
+]
+.pull-right[
+
+<pre><code>```ruby
+def add(a, b)
+  a + b
+end
+```</code></pre>
+]
+
+A number of highlighting [styles](https://github.com/gnab/remark/wiki/Configuration#highlighting) are available, including several well-known themes from different editors and IDEs.
+
+]
+---
+.left-column[
+  ## Presenter mode
+]
+.right-column[
+To help out with giving presentations, a presenter mode comprising the
+following features is provided:
+
+- Display of slide notes for the current slide, to help you remember
+  key points
+
+- Display of upcoming slide, to let you know what's coming
+
+- Cloning of slideshow for viewing on extended display
+]
+---
+.left-column[
+  ## Presenter mode
+  ### - Inline notes
+]
+.right-column[
+Just like three dashes separate slides,
+three question marks separate slide content from slide notes:
+
+```
+Slide 1 content
+
+*???
+
+Slide 1 notes
+
+---
+
+Slide 2 content
+
+*???
+
+Slide 2 notes
+```
+
+Slide notes are also treated as Markdown, and will be converted in the
+same manner slide content is.
+
+Pressing __P__ will toggle presenter mode.
+]
+???
+Congratulations, you just toggled presenter mode!
+
+Now press __P__ to toggle it back off.
+---
+.left-column[
+  ## Presenter mode
+  ### - Inline notes
+  ### - Cloned view
+]
+.right-column[
+Presenter mode of course makes no sense to the audience.
+
+Creating a cloned view of your slideshow lets you:
+
+- Move the cloned view to the extended display visible to the audience
+
+- Put the original slideshow in presenter mode
+
+- Navigate as usual, and the cloned view will automatically keep up with the original
+
+Pressing __C__ will open a cloned view of the current slideshow in a new
+browser window.
+]
+---
+template: inverse
+
+## It's time to get started!
+---
+.left-column[
+  ## Getting started
+]
+.right-column[
+Getting up and running is done in only a few steps:
+
+1. Visit the [project site](http://github.com/gnab/remark)
+
+2. Follow the steps in the Getting Started section
+
+For more information on using remark, please check out the [wiki](https://github.com/gnab/remark/wiki) pages.
+]
+---
+name: last-page
+template: inverse
+
+## That's all folks (for now)!
+
+Slideshow created using [remark](http://github.com/gnab/remark).
+    </textarea>
+    <script src="downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var hljs = remark.highlighter.engine;
+    </script>
+    <script src="remark.language.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      var slideshow = remark.create({
+          highlightStyle: 'monokai',
+          highlightLanguage: 'remark'
+        }) ;
+    </script>
+    <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+  </body>
+</html>
