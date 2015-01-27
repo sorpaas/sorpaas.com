@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>The Munje Programming Language</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>The Munje Programming Language</h1>
+		<p>Brendan Tang</p>
+	</header>
+	<section class="slide cover" id="Cover"><div>
+		<h2>The Munje Programming Language</h2>
+		<img src="pictures/cover.jpg" alt="">
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+			-->
+		<style>
+			#Cover h2 {
+				margin:30px 0 0;
+				color:#FFF;
+				text-align:center;
+				font-size:70px;
+				}
+			#Cover p {
+				margin:10px 0 0;
+				text-align:center;
+				color:#FFF;
+				font-style:italic;
+				font-size:20px;
+				}
+				#Cover p a {
+					color:#FFF;
+					}
+		</style>
+	</div></section>
+        <section class="slide shout"><div>
+	    <h2>Munje means <br>"the universe" in Lojban</h2>
+	</section>
+	<section class="slide"><div>
+	    <h2>The Design</h2>
+            <ol>
+              <li>Logical Programming Language</li>
+              <li>Time-static, side-effects</li>
+              <li>Simple</li>
+              <li>Yet, powerful</li>
+            </ol>
+            <p class="note">Advanced <strong>Lojban</strong> Human-Computer Communication.</p>
+	</section>
+        <section class="slide"><div>
+	    <h2>Example</h2>
+	    <pre>
+	      <code>define factorial</code>
+	      <code>  factorial 0 1</code>
+	      <code>  factorial n y</code>
+	      <code>  (>) n 0</code>
+	      <code>  (-) n 1 n'</code>
+              <code>  factorial n' y'</code>
+              <code>  (*) y' n y</code>
+	    </pre>
+	</div></section>
+        <section class="slide"><div>
+	    <h2>Concepts</h2>
+            <ol>
+              <li>Relations (bridi)</li>
+              <li>Terms (selbri)</li>
+              <li>Arguments (sumti)</li>
+              <li>Paragraph (girzu)</li>
+            </ol>
+            <p class="note">Oh, that's the only 4 concepts in Munje.</p>
+	</section>
+        <section class="slide"><div>
+	    <h2>Example</h2>
+	    <pre>
+	      <code><mark>define factorial</mark></code>
+	      <code>  factorial 0 1</code>
+	      <code>  factorial n y</code>
+	      <code>  (>) n 0</code>
+	      <code>  (-) n 1 n'</code>
+              <code>  factorial n' y'</code>
+              <code>  (*) y' n y</code>
+	    </pre>
+	</div></section>
+        <section class="slide"><div>
+	    <h2>Example</h2>
+	    <pre>
+	      <code>define factorial</code>
+	      <code><mark>  factorial 0 1</mark></code>
+	      <code>  factorial n y</code>
+	      <code>  (>) n 0</code>
+	      <code>  (-) n 1 n'</code>
+              <code>  factorial n' y'</code>
+              <code>  (*) y' n y</code>
+	    </pre>
+	</div></section>
+        <section class="slide"><div>
+	    <h2>Example</h2>
+	    <pre>
+	      <code>define factorial</code>
+	      <code>  factorial 0 1</code>
+	      <code><mark>  factorial n y</mark></code>
+	      <code>  (>) n 0</code>
+	      <code>  (-) n 1 n'</code>
+              <code>  factorial n' y'</code>
+              <code>  (*) y' n y</code>
+	    </pre>
+	</div></section>
+        <section class="slide"><div>
+	    <h2>Example</h2>
+	    <pre>
+	      <code>define factorial</code>
+	      <code>  factorial 0 1</code>
+	      <code>  factorial n y</code>
+	      <code><mark>  (>) n 0</mark></code>
+	      <code>  (-) n 1 n'</code>
+              <code>  factorial n' y'</code>
+              <code>  (*) y' n y</code>
+	    </pre>
+	</div></section>
+        <section class="slide"><div>
+	    <h2>Example</h2>
+	    <pre>
+	      <code>define factorial</code>
+	      <code>  factorial 0 1</code>
+	      <code>  factorial n y</code>
+	      <code>  (>) n 0</code>
+	      <code><mark>  (-) n 1 n'</mark></code>
+              <code>  factorial n' y'</code>
+              <code>  (*) y' n y</code>
+	    </pre>
+	</div></section>
+        <section class="slide"><div>
+	    <h2>Example</h2>
+	    <pre>
+	      <code>define factorial</code>
+	      <code>  factorial 0 1</code>
+	      <code>  factorial n y</code>
+	      <code>  (>) n 0</code>
+	      <code>  (-) n 1 n'</code>
+              <code><mark>  factorial n' y'</mark></code>
+              <code>  (*) y' n y</code>
+	    </pre>
+	</div></section>
+        <section class="slide"><div>
+	    <h2>Example</h2>
+	    <pre>
+	      <code>define factorial</code>
+	      <code>  factorial 0 1</code>
+	      <code>  factorial n y</code>
+	      <code>  (>) n 0</code>
+	      <code>  (-) n 1 n'</code>
+              <code>  factorial n' y'</code>
+              <code><mark>  (*) y' n y</mark></code>
+	    </pre>
+	</div></section>
+        <section class="slide"><div>
+	    <h2>Example</h2>
+	    <pre>
+	      <code><mark>factorial 5 y</mark></code>
+	    </pre>
+            <p class="note">Then query the result.</p>
+	</div></section>
+        <section class="slide shout"><div>
+	    <h2>Time-static</h2>
+	</section>
+        <section class="slide"><div>
+	    <h2>Time-static</h2>
+	    <p>About I/O Monad in Haskell, dealing with side effects ...</p>
+            <ul>
+              <li>Data becomes unmanaged</li>
+              <li>Use monad to do too many things</li>
+            </ul>
+            <p class="note">[String] is just a sugar for List String ...</p>
+	</div></section>
+        <section class="slide"><div>
+	    <h2>Side effects is just because ...</h2>
+            <p>In the real world, we have time.</p>
+            <p class="note">I see the Past, Present & Future, existing all at once. <br>(William Blake)</p>
+	</section>
+        <section class="slide"><div>
+	    <h2>Time-static</h2>
+	    <p>Time is just another dimension, it shouldn't be so complex ...</p>
+            <ul>
+              <li>Temporal Logic: Event-token Reification</li>
+              <li>Compiler generates a sequence of time points based on the programs' needs</li>
+              <li>Timepoints are used in Munje just like anything else (except we have Time-tense API)</li>
+            </ul>
+	</div></section>
+        <section class="slide"><div>
+            <h2>Types</h2>
+            <pre>
+              <code>boolean true</code>
+              <code>boolean false</code>
+              <code> </code>
+              <code>define to_boolean</code>
+              <code>  to_boolean rel val</code>
+              <code>  or (and rel (equals val true))</code>
+              <code>     (and (not rel) (equals val false))</code>
+        </div></section>
+        <section class="slide"><div>
+	    <h2>Types</h2>
+	    <pre>
+	      <code>def cons</code>
+	      <code>  cons head tail</code>
+	      <code>  equals tail (cons head' tail')</code>
+	      <code>  similar head head'</code>
+	      <code>  similar tail tail'</code>
+	    </pre>
+	</div></section>
+        <section class="slide"><div>
+	    <h2>Types</h2>
+	    <pre>
+	      <code>cons "Who are you?"</code>
+	      <code>  (cons "Where do you come from?"</code>
+	      <code>  (cons "Where are you going?"))</code>
+	    </pre>
+	</div></section>
+        <section class="slide"><div>
+	    <h2>Equals</h2>
+	    <pre>
+	      <code>define equals</code>
+	      <code>  equals x x</code>
+	    </pre>
+            <p class="note">It's pattern matching, man ...</p>
+	</div></section>
+	<section class="slide"><div>
+	    <h2>Contribute</h2>
+            <ul>
+              <li>Language Spec: http://ns.mg/Munje</li>
+              <li>Implementation: http://github.com/sorpaas/munje</li>
+              <li>Oh, just remember it's GPL 3.0 and CC BY-NC-SA 3.0</li>
+              <li>sorpa'as plat &ltme@sorpaas.com&gt</li>
+            </ul>
+	</div></section>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2014 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>

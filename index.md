@@ -11,6 +11,7 @@ Welcome, my firends! Keep calm, as you have just found (yet) another people in t
 
 You can read some posts I wrote in [English](/en), [Lojban](/jbo) and [Chinese](/zh). It also contains some [copies](/copies) that I found interesting. Otherwise, here are some links that you might find useful:
 
+* [Talks](/talks)
 * [About](/about)
 * [Tumblr](//tumblr.sorpaas.com)
 * [Github](//github.com/sorpaas)
