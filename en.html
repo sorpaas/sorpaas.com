@@ -1,0 +1,19 @@
+---
+layout: default
+title: English Posts
+---
+
+<h2>English Posts</h2>
+
+<ul class="related-posts">
+  {% for post in site.categories.en %}
+  <li>
+    <h3>
+      <a href="{{ post.url }}">
+        {{ post.title }}
+        <small><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time></small>
+      </a>
+    </h3>
+  </li>
+  {% endfor %}
+</ul>

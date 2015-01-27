@@ -1,0 +1,37 @@
+# Dependencies
+markdown:            redcarpet
+highlighter:         pygments
+
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+relative_permalinks: true
+
+# Setup
+title:               "sorpa'as plat"
+tagline:             .i mi pacna
+url:                 http://sorpaas.com
+baseurl:             /
+
+# Assets
+#
+# We specify the directory for Jekyll so we can use @imports.
+sass:
+  sass_dir:          _scss
+  style:            :compressed
+
+# About/contact
+author:
+  name:              "sorpa'as plat"
+  url:               http://sorpaas.com
+  email:             me@sorpaas.com
+
+# Custom vars
+version:             1.0.0
+github:
+  repo:              https://github.com/sorpaas/sorpaas.com
+
+collections:
+  copies:
+    output:          true

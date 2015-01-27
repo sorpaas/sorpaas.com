@@ -1,0 +1,57 @@
+---
+description: Song of Github 2014
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Song of GitHub - Let me sing you the song of my contributions.</title>
+
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet'>
+    <link href='../css/style.css' rel='stylesheet'>
+  </head>
+
+  <body>
+    <section id='main'>
+
+        <div id=sorpaas>
+          <h3>sorpaas in C Major.</h3>
+
+          <table id='visualize'>
+            <tr id='day0'></tr>
+            <tr id='day1'></tr>
+            <tr id='day2'></tr>
+            <tr id='day3'></tr>
+            <tr id='day4'></tr>
+            <tr id='day5'></tr>
+            <tr id='day6'></tr>
+          </table>
+
+        </div>
+
+    </section>
+
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+
+    <script src='../js/MIDI.min.js'></script>
+    <script src='../js/Base64.js'></script>
+    <script src='../js/base64binary.js'></script>
+
+    <div style="display:none;">
+        <div id="sorpaas-data">
+          {% include song-of-github/2014.svg %}
+        </div>
+    </div>
+
+    <script>
+      var names = [];
+        names.push("sorpaas");
+    </script>
+
+    <script src='../js/index.js'></script>
+
+    <script>
+      songOfGitHub.init();
+    </script>
+  </body>
+</html>

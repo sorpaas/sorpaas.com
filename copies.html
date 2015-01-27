@@ -1,0 +1,19 @@
+---
+layout: default
+title: Copies
+---
+
+<h2>Copies</h2>
+<p>Those articles are put here for archive and better reading experiences. I may not hold copyrights for the it. If you think it's against the laws in your country, please <a href="mailto:me@sorpaas.com">contact me</a> and I will put it down.</p>
+
+<ul class="related-posts">
+  {% for post in site.collections.copies.docs %}
+  <li>
+    <h3>
+      <a href="{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h3>
+  </li>
+  {% endfor %}
+</ul>
