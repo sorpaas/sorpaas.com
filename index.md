@@ -13,6 +13,7 @@ You can read some posts I wrote in [English](/en), [Lojban](/jbo) and [Chinese](
 
 * [Talks](/talks)
 * [About](/about)
+* [Wiki](/wiki)
 * [Tumblr](//tumblr.sorpaas.com)
 * [Github](//github.com/sorpaas)
 * [Project Nsmg](//ns.mg)

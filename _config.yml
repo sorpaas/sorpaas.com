@@ -37,3 +37,5 @@ collections:
     output:          true
   talks:
     output:          true
+  wiki:
+    output:          true
