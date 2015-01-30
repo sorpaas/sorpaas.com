@@ -1,6 +1,6 @@
 ---
 title: Conlangs
-layout: pages
+layout: page
 ---
 
 * [Lojban](http://www.lojban.org)

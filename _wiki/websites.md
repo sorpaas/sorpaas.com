@@ -1,6 +1,6 @@
 ---
 title: Websites
-layout: pages
+layout: page
 ---
 
 * [Red Blob Games](http://www.redblobgames.com/)
