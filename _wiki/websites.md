@@ -13,6 +13,10 @@ Textbooks
 --------
 * [An Introudction to Computer Networks](http://intronetworks.cs.luc.edu/current/html/)
 
+Math
+--------
+* [Project Euler](http://projecteuler.net/)
+
 Others
 --------
 * [Open Source Ecology](http://opensourceecology.org/wiki/)
