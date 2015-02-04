@@ -14,3 +14,4 @@ Learning Lojban
 --------
 
 * [Tatoeba](http://tatoeba.org)
+* [La Bangu: One-page Vlaste](http://mw.lojban.org/lmw/La_Bangu:_one-page_vlaste)
