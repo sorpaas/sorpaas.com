@@ -21,3 +21,4 @@ Others
 --------
 * [Open Source Ecology](http://opensourceecology.org/wiki/)
 * [The Daily Storyline of Science](http://www.scilogs.com/)
+* [Everything Animated](http://everythinganimated.tv/)
