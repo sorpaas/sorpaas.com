@@ -4,7 +4,13 @@ title: Home
 ---
 
 <p class="message">
-.i mi pacna .i mi platu .i mi drata ro lo prenu .i mi'e la sorpa'as mu'o
+I was not abused, abandoned, or locked up as a child. My parents were not alcoholics, nor were they ever divorced or dead. We did not live in poverty, or in misery, or in an exotic country. I am not a misunderstood genius, a former child celebrity, or the child of a celebrity. I am not a drug addict, sex addict, food addict, or recovered anything. If I indeed had a past life, I have no recollection of who I was.<br>
+<br>
+I have not survived against all odds.<br>
+I have not lived to tell.<br>
+I have not witnessed the extraordinary.<br>
+<br>
+This is my story.
 </p>
 
 Welcome! You can read some posts I wrote in [English](/en), [Lojban](/jbo) and [Chinese](/zh). It also contains some [copies](/copies) that I found interesting. Otherwise, here are some links that you might find useful:
