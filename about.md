@@ -3,6 +3,8 @@ layout: page
 title: About
 ---
 
+<p class="message">sorpa'as plat, is now more commonly known as Wei Tang.</p>
+
 Here are some words that I usually use when I'm asked to "introduce myself":
 
 > I think if I just use one short term to describe myself, that would be "code artist". I believe in human beings and technology, and I'm also a human that loves, has fun, and enjoys freedom. I am also a Lojbanist.
